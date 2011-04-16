@@ -1,0 +1,107 @@
+2003-05-20  Simon Law  <sfllaw@uwaterloo.ca>
+
+	* uw-wkrpt.dtx (\mainmatter, \appendix): For E&CE, "Appendix"
+	should prefix all appendix letters.
+
+	* uw-wkrpt-ece.tex: Appendices are at the end now.  Fixed
+	Dr. Vannelli's name.
+
+2003-05-10  Simon Law  <sfllaw@uwaterloo.ca>
+
+	* uw-wkrpt.dtx (setspace): Use one-and-half-spacing for people
+	who require it.
+
+	* uw-wkrpt.dtx (\appendix): Calling \mainmatter is a bad idea.
+	Also, call \@mainsect so we have section numbers.
+
+	* uw-wkrpt-se.tex: Appendices are at the end now.
+
+2003-05-08  Simon Law  <sfllaw@uwaterloo.ca>
+
+	* uw-wkrpt.dtx (\mainmatter, \backmatter, \appendix): Math work 
+	reports don't require page breaks for numbered sections.  As 
+	well, they need Section '1.0', not Section '1'.
+
+	* uw-wkrpt.dtx: Fix some silly error messages.  Use a nicer date.
+
+	* uw-wkrpt.cecs.tex: \usepackage{graphicx} instead.
+	* uw-wkrpt-ece.tex: Ibid.
+	* uw-wkrpt-math.tex: Ibid.
+	* uw-wkrpt-se.tex: Ibid.
+
+	* uw-wkrpt.dtx (\fileversion, \filedate): Hack around broken 
+	\GetFileInfo{}.
+
+	* Makefile (%.dvi): Use don-hires.eps.
+
+2003-05-07  Simon Law  <sfllaw@uwaterloo.ca>
+
+	* uw-wkrpt-cecs.tex: Fixed header comment.  Use \centering instead
+	of \centerline in floats.
+	* uw-wkrpt-ece.tex: Ibid.
+	* uw-wkrpt-math.tex: Ibid.
+	* uw-wkrpt-se.tex: Ibid.
+
+2003-05-06  Simon Law  <sfllaw@uwaterloo.ca>
+
+	* uw-wkrpt.dtx: Don't define the top and bottom margins.
+
+2003-05-02  Simon Law  <sfllaw@uwaterloo.ca>
+
+	* uw-wkrpt.dtx (letter): Keep the signature block together.
+
+2003-04-30  Simon Law  <sfllaw@uwaterloo.ca>
+	Version 2.1 released.
+
+	* uw-wkrpt.dtx: Fixed spelling mistake in the letter environment.
+	* uw-ukrpt-se.tex: \faculty{Software Engineering}
+	* README: Added information about other packages.
+
+2003-04-27  Simon Law  <sfllaw@uwaterloo.ca>
+	Version 2.0 released.
+
+	* uw-ece-workreport.cls: Deprecated.
+	* uw-wkrpt.dtx: Replaces uw-ece-workreport.cls.  For detailed
+	changes, please see the "Change Log" section in the manual.
+	* uw-wkrpt.ins: Installs uw-wkrpt.dtx
+	* Makefile: Builds the system
+
+2003-01-12  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+
+	* uw-ece-workreport.cls: Updated the year of copyright.
+	* workreport-sample.tex: Same as above.
+	* workreport-sample.bib: Same as above.
+
+2003-01-11  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+	Version 1.1 released.
+
+	* workreport-sample.tex: Add two examples of how to use floating
+	tables.  Demonstrated the use of the \includegraphics command.  Also
+	demonstrated the picture environment.
+	* workreport-sample.bib: Include references for Knuth's photograph,
+	and TAOCP.
+	* don-hires.pdf: New file, generated from don-hires.jpg from Knuth's
+	website.
+
+2003-01-08  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+
+	* uw-ece-workreport.cls: Added the author's name to the submission 
+	letterhead.
+
+	* workreport-sample.tex: Add an example of how to use floating 
+	tables.  Demonstrated the use of the tabular environment.
+
+2002-10-04  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+
+	* uw-ece-workreport.cls: Removed the "Table of Contents" entry from
+	the table of contents.  Likewise, we add the "List of Tables" and
+	"List of Figures" entries.
+
+2002-08-02  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+
+	* uw-ece-workreport.cls: New file.
+
+	* workreport-sample.tex: New file.
+	* workreport-sample.bib: New file.
+	* workreport-sample.pdf: New file.
+

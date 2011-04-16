@@ -1,0 +1,65 @@
+2003-05-20  Simon Law  <sfllaw@uwaterloo.ca>
+
+	Version 2.6 released.
+
+	E&CE reports apparently have to have appendices at the end too.
+Plus, they need Appendices labelled as "Appendix A" and not just "A".
+
+2003-05-09  Simon Law  <sfllaw@uwaterloo.ca>
+
+	Version 2.5 released.
+
+	Software Engineering reports are fixed (again) to have appendices
+at the end.
+
+2003-05-09  Simon Law  <sfllaw2uwaterloo.ca>
+
+	Version 2.4 released.
+
+	Software Engineering reports are fixed.  As well, page numbering 
+for appendices is fixed.
+
+2003-05-09  Simon Law  <sfllaw2uwaterloo.ca>
+
+	Version 2.3 released.
+
+	Section numbering is fixed for mathematics students.
+
+2003-05-08  Simon Law  <sfllaw@uwaterloo.ca>
+
+	Version 2.2 released.
+
+	We corrected some margin sizes.
+
+2003-04-30  Simon Law  <sfllaw@uwaterloo.ca>
+
+	Version 2.1 released.
+
+	We fixed some small spelling mistakes.
+
+2003-04-27  Simon Law  <sfllaw@uwaterloo.ca>
+
+	Version 2.0 released.  This is the first version that is actually
+documented properly,  It can even be installed into a TDS compliant
+TeX system.
+
+	We now support CECS work reports, along with Math, and Soft Eng.
+Of course, E&CE reports are still supported.  There are sample documents
+for each type of work report, that you can use as a template.
+
+
+2003-01-11  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+
+	Version 1.1 released.
+
+	We now generate correct "Table of Contents" pages.  As well, the 
+included sample document demonstrates more LaTeX features: such as tables,
+figures, and pictures.
+
+	I thank Dave Meyers and Andrew Stannard for their constructive
+comments and sample patches.
+
+
+2002-08-02  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+
+	Initial release.

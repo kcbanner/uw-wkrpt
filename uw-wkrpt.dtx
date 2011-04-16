@@ -1,0 +1,1833 @@
+% \iffalse meta-comment
+% uw-wkrpt.dtx - DocStrip source code for the uw-wkrpt package
+% Copyright (C) 2003  Simon Law
+% 
+%   This program is free software; you can redistribute it and/or modify
+%   it under the terms of the GNU General Public License as published by
+%   the Free Software Foundation; either version 2 of the License, or
+%   (at your option) any later version.
+% 
+%   This program is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%   GNU General Public License for more details.
+% 
+%   You should have received a copy of the GNU General Public License
+%   along with this program; if not, write to the Free Software
+%   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+%
+% \fi
+% \def\fileversion{v2.6}
+% \def\filedate{2003/05/20}
+% \iffalse
+%<class>\NeedsTeXFormat{LaTeX2e}
+%<class>\ProvidesPackage{uw-wkrpt}[2003/05/20 v2.6 U. of Waterloo work reports]
+%<*driver>
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\documentclass[letterpaper]{ltxdoc}
+\usepackage{calc}
+\usepackage{url} \urlstyle{sf}
+\usepackage{textcomp}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\newlength{\ExampleWidth}
+\setlength{\ExampleWidth}{3.5cm}
+\fvset{gobble=6,numbersep=3pt,frame=single,
+       numbers=left,xleftmargin=5mm,xrightmargin=0pt}
+\fvset{xrightmargin=\ExampleWidth}
+\EnableCrossrefs
+ %\DisableCrossrefs     % Say \DisableCrossrefs if index is ready
+\CodelineIndex
+\RecordChanges          % Gather update information
+ %\OnlyDescription      % comment out for implementation details
+ \OldMakeindex           % use if your MakeIndex is pre-v2.9
+ %\setlength\hfuzz{15pt}  % don't make so many
+ %\hbadness=7000          % over and under full box warnings
+\begin{document}
+  \DocInput{uw-wkrpt.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \StopEventually{\PrintIndex \PrintChanges}
+% \CheckSum{938}
+%
+% \DoNotIndex{\#,\$,\#,\&,\@,\\,\{,\},\^,\_,\~,\ }
+% \DoNotIndex{\addcontentsline, \addpenalty, \addtolength, \advance, \and}
+% \DoNotIndex{\begin, \begingroup, \bfseries, \bibliographystyle, \boolean}
+% \DoNotIndex{\ClassError, \ClassWarning, \clearpage, \columnwidth, 
+%             \contentsname, \csname, \c@secnumdepth, \c@tocdepth, 
+%             \CurrentOption}
+% \DoNotIndex{\DeclareRobustCommand, \DeclareOption, \def, \@dotsep}
+% \DoNotIndex{\@empty, \else, \end, \endcsname, \endgroup, \equal,
+%             \evensidemargin, \everyvbox}
+% \DoNotIndex{\fi, \footnoterule, \footnotesize, \footskip}
+% \DoNotIndex{\gdef, \global, \@gobble}
+% \DoNotIndex{\@hangfrom, \hb@xt@, \hbox, \headheight, \headsep, 
+%             \@highpenalty, \hfil, \hskip, \hss, \huge}
+% \DoNotIndex{\ifdim, \ifnum, \ifthenelse, \ifx, \interlinepenalty}
+% \DoNotIndex{\large, \leaders, \leavemode, \leavevmode, \lengthtest, 
+%             \leftskip, \let, \LoadClass, \lowercase, \l@section}
+% \DoNotIndex{\@M, \m@ne, \m@th, \makebox, \MakeTextUppercase, 
+%             \medskipamount, \mkern}
+% \DoNotIndex{\newcommand, \newenvironment, \newif, \newlength, \nobreak, 
+%             \noexpand, \noindent, \null, \numberline}
+% \DoNotIndex{\oddsidemargin, \or}
+% \DoNotIndex{\p@, \paperheight, \paperwidth, \@@par, \par, \parbox, 
+%             \parfillskip, \parindent, \PassOptionsToClass, \penalty, 
+%             \@plus, \@pnumwidth, \ProcessOptions, \protect, 
+%             \protected@edef, \providecommand}
+% \DoNotIndex{\relax, \refstepcounter, \renewcommand, \renewenvironment, 
+%             \RequirePackage, \rightskip, \rule}
+% \DoNotIndex{\@svsec, \@svsechd, \@seccntformat, \@sect, \setcounter, 
+%             \setlength, \settowidth, \small, \string}
+% \DoNotIndex{\@tempdima, \@tempskipa, \textbf, \textheight, \textit, 
+%             \textsc, \textwidth, \thanks, \thesection, \thispagestyle,
+%             \today, \topmargin}
+% \DoNotIndex{\undefined, \urlstyle, \usepackage, 
+%             \UWECEWorkReportVersion, \uwwkrpt@ecefalse, 
+%             \uwwkrpt@ecetrue, \uwwkrpt@mathfalse, \uwwkrpt@mathtrue, 
+%             \uwwkrpt@sefalse, \uwwkrpt@setrue}
+% \DoNotIndex{\vfill, \vskip, \vspace}
+% \DoNotIndex{\write}
+% \DoNotIndex{\@xsect}
+% \DoNotIndex{\z@}
+% \setcounter{IndexColumns}{2}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v1.0}{2002/08/02}{First public release of
+%                            \textsf{\mbox{uw-ece-workreport}}.}
+% \changes{v1.1}{2003/01/11}{Minor bug fixes.}
+% \changes{v2.0}{2003/04/26}{First \textsf{docstrip} release.}
+% \changes{v2.0}{2003/04/21}{Renamed the class to \textsf{uw-wkrpt}.}
+%
+%^^A Define hanging footnotes.
+% \makeatletter
+% \let\footnote@rig\footnote
+% \newlength{\footnoteh@ngindent}
+% \renewcommand{\footnote}[1]{^^A
+%   \setlength{\footnoteh@ngindent}{\parindent}^^A
+%   \footnote@rig{\setlength{\hangindent}{\footnoteh@ngindent}#1}}
+% \makeatother
+%
+%^^A This doesn't work
+%^^A \GetFileInfo{uw-wkrpt.cls}
+%
+% \setcounter{page}{17}
+% \title{The \textsf{uw-wkrpt} document class\thanks{Version \fileversion, 
+%                                                    last revised \filedate}}
+% \author{Simon Law\thanks{\textsf{sfllaw@engmail.uwaterloo.ca}}}
+% \def\today{\number\day \space\ifcase\month\or
+%   January\or February\or March\or April\or May\or June\or
+%   July\or August\or September\or October\or November\or December\fi
+%   \space\number\year}
+% \maketitle
+% \begin{multicols}{2}
+% \tableofcontents
+% \end{multicols}
+%
+% \section{Introduction}
+%
+% At the University of Waterloo,^^A
+% \footnote{\url{http://www.uwaterloo.ca/}}
+% thousands of undergraduate students participate
+% in the co-operative education program: a partnership between the
+% University and businesses world-wide to provide first-hand experience
+% for students.
+%
+% As part of this program, students write work reports---both to enrich
+% their own literary skills, and also to provide employers with
+% research that is professional, analytical, and useful.
+%
+% \section{Justification}
+%
+% The Co-operative Education and Career Services (CECS) department
+% mandates certain formatting and stylistic conventions.  In addition,
+% each department may impose their own conventions above and beyond
+% the general CECS conventions.  Work reports are checked to ensure
+% that they conform.
+%
+% Human beings are fallable, however, and are liable to misinterpret
+% the required conventions.  Formatting a document according to fixed
+% rules is something a computer should be apt at doing.  Indeed, this
+% \LaTeX{} document class implements the formatting so that is done
+% automatically.
+%
+% The inquiring mind may wonder, ``why choose \LaTeX{}?''  We must
+% consider that it is not a common application with which undergraduate
+% students are familiar.  Indeed, a word processor is more comfortable
+% to most students.  However, implementing the requirements of each
+% style in a word processor is far from simple.  Templates and styles
+% are available to the student, but they are neither transparent to use
+% nor easy to implement.  \LaTeX{} is a simple, macro based language
+% that can format text without great user effort.  It can parse plain
+% text with some sparse semantic tags to provide a decent report.  Since
+% it is coupled with the world-renowned \TeX{} typesetting engine, the
+% resulting report is \ae{}sthetically pleasing and typeset tastefully.
+%
+% A simple \LaTeX{} document can be constructed
+% easily~\cite{ref:lamport}, with the knowledge
+% of just a few commands.  In the example on the following page, it is 
+% plain to see that the majority of the document is entered as
+% plain text.
+% \begingroup\center
+% \begin{minipage}[c]{\ExampleWidth-5mm}
+%^^A We must manually hint the hyphenation here, as the English
+%^^A hyphenation module knows nothing about Latin.
+%   Lorem ip\-sum do\-lor sit amet, con\-sec\-te\-tur 
+%   adipi\-sicing elit, sed do eius\-mod tem\-por 
+%   in\-ci\-di\-dunt ut labore et do\-lore magna ali\-qua. 
+%   Ut enim ad mi\-nim ven\-iam, quis nos\-trud 
+%   exer\-cita\-tion ullam\-co labo\-ris ni\-si ut 
+%   ali\-quip ex ea commodo con\-se\-quat.
+% \end{minipage}
+% \begin{minipage}{\textwidth-\ExampleWidth}
+%   \fvset{xrightmargin=0pt}
+%   \begin{Verbatim}
+%     \documentclass{article}
+%     \begin{document}
+%
+%     Lorem ipsum dolor sit amet, consectetur 
+%     adipisicing elit, sed do eiusmod tempor 
+%     incididunt ut labore et dolore magna aliqua. 
+%     Ut enim ad minim veniam, quis nostrud 
+%     exercitation ullamco laboris nisi ut 
+%     aliquip ex ea commodo consequat.
+%
+%     \end{document}
+%   \end{Verbatim}
+% \end{minipage}
+% \endcenter\endgroup
+% \noindent
+% Each macro is prefixed by a backslash, and is followed by an
+% alphabetic identifier.  Parameters to these macros are encased within
+% curly braces.  On line 1, we declare that this document uses the
+% \textsf{article} document class, which determines certain formatting
+% options.  The rest of the document is created with a |\begin{document}|
+% command, and finished with an |\end{document}|.
+%
+% Although the layout of the final text is not immediately obvious
+% from the input that is keyed in, the input language is rather legible.
+% One can argue that using a plain text interface allows the author
+% to concentrate on the content of his message, and not the formatting.
+% Since the computer does most of the formatting work, it is only
+% necessary to proofread the document and tweak minor details.
+%
+% \section{A simple document}
+%
+% Sample documents that show the recommended layout are available.
+% You can use these samples as a basis for your own report by removing
+% the generic text, and replacing it with your own.  As well, they
+% provide examples for how to typeset common forms.
+% These documents are stored as 
+% \texttt{uw-wkrpt-\textsl{faculty}.tex}, where
+% \texttt{\textsl{faculty}} is one of:
+% \begin{description}
+% \item[\texttt{ece}] for Electrical and Computer Engineering (E\&CE) 
+%                     students, this implements the ``E\&CE work term
+%                     report guidelines''~\cite{ref:ecewrg};
+% \item[\texttt{math}] for Mathematics (Math) students, this implements
+%                      the ``Faculty of mathematics work report 
+%                      guidelines''~\cite{ref:mwrg};
+% \item[\texttt{se}] for Software Engineering (SE) students, this
+%                    implements the ``Software engineering work report
+%                    guidelines''~\cite{ref:sewrg}; or
+% \item[\texttt{cecs}] for those students without special guidelines,
+%                      see section \ref{sec:documentclass}
+% \end{description}
+%
+% \subsection{The document class} \label{sec:documentclass}
+% 
+% \begin{DescribeEnv}{\textsf{uw-wkrpt}}
+% Every document needs to have a document class, so it must be
+% specified.  The simplest work report format is the one required by 
+% CECS and specified by Chapter 9 of the ``Co-operative education
+% student reference manual.''~(CESRM)~\cite{ref:cesrm}.  These
+% guidelines are used by the majority of programs and can be used like
+% so:
+% \begin{verbatim}\documentclass{uw-wkrpt}\end{verbatim}
+%
+% However, some programs have their own special requirements.  Although 
+% there are a number of such programs, I have only implemented the
+% guidelines for E\&CE~\cite{ref:ecewrg}, Math~\cite{ref:mwrg}, and 
+% SE~\cite{ref:sewrg}.  To specify these special
+% requirements, we provide an optional argument to the |\documentclass|
+% command.  For example, a Math student would use:
+% \begin{verbatim}\documentclass[math]{uw-wkrpt}\end{verbatim}
+% Notice how |[math]| is enclosed by square brackets.  Other valid
+% options are |[ece]| and |[se]|.
+%
+% As well, the letter of submittal may be formatted in either modified
+% block, or block format.  The default is modified block.  This can be
+% controlled with the |[modifiedletter]| and |[blockletter]| options.
+%
+% Note that no text may appear before the |\documentclass| command.
+% \end{DescribeEnv}
+%
+% \subsection{The preamble} \label{sec:preamble}
+%
+% \newsavebox{\missingbegindocument}
+% \begin{lrbox}{\missingbegindocument}^^A
+% \verb'! LaTeX Error: Missing \begin{document}.'^^A
+% \end{lrbox}
+% Between the |\documentclass{uw-wkrpt}| command and the 
+% |\begin{document}| command is the section known as the preamble.
+% No text may occur here,^^A
+% \footnote{In fact, if plain text does get put in the
+% preamble \LaTeX{} will complain with the error: 
+% \usebox{\missingbegindocument}}
+% but commands to set initial values and options
+% are declared at this point.
+%
+% \subsubsection{Mandatory values} \label{sec:mandvalues}
+%
+% The following commands define initial values that must be set.
+% These values are used to typeset the title page (see Section
+% \ref{sec:document},) and the letter of submittal (see Section 
+% \ref{sec:prelim}.)
+%
+% \begin{DescribeMacro}{\title}
+% The |\title|\marg{text} command defines the work report's title.  
+% This will be capitalised on the title page, and included in the 
+% letter of submittal.  
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\author}
+% The |\author|\marg{text} command defines the author's name.  
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\uwid}
+% The |\uwid|\marg{text} command defines the author's student 
+% identification number.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\address}
+% The |\address|\marg{text} command defines the author's home address.
+% Since an address can span multiple lines, each line is separated with 
+% a |\\*| command.
+% \begin{verbatim}\address{200 University Ave. W.,\\*
+%         Waterloo, ON\ \ N2L 3G1}\end{verbatim}
+% Also note the use of \verb*|\ \ | ^^A*
+% to force a double-space between the province and the postal code.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\employer}
+% The |\employer|\marg{text} command defines the employer's name.  
+% Typically, this will be the company's business name.
+% \end{DescribeMacro}
+% 
+% \begin{DescribeMacro}{\employeraddress}
+% The |\employeraddress|\marg{text} command defines the employer's 
+% short address, which should merely be the name of the city and province.
+% For example, if the employer is located in Montr\'eal, Qu\'ebec:
+% \begin{verbatim}\employeraddress{Montr\'eal, QC}\end{verbatim}
+% or in New York, New York, USA:
+% \begin{verbatim}\employeraddress{New York, NY}\end{verbatim}
+% or in London, England:
+% \begin{verbatim}\employeraddress{London, UK}\end{verbatim}
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\school}
+% The |\school|\marg{text} command defines the name of the school 
+% the author attends.  This should be
+% \begin{verbatim}\school{University of Waterloo}\end{verbatim}
+% for most students.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\faculty}
+% The |\faculty|\marg{text} command defines the faculty or program 
+% the author is in.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\email}
+% The |\email|\marg{text} command defines the author's e-mail address.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\term}
+% The |\term|\marg{text} command defines the previous academic term 
+% the author was enrolled in.  For instance, if the author has only 
+% finished one school term, (\emph{i.e.} she is in stream four), then 
+% she would use
+% \begin{verbatim}\term{1A}\end{verbatim}
+% because she last attended school in her 1A term.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\program}
+% The |\program|\marg{text} command defines the author's current
+% program.  A student in Computer Science would write
+% \begin{verbatim}\program{Computer Science}\end{verbatim}
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\chair}
+% The |\chair|\marg{text} command defines the very important person to
+% whom your letter of submittal is submitted.
+% From Section 9.9.1 of the CESRM~\cite{ref:cesrm}:
+% \begin{quote}
+%   If this is your first report (except if you are in Arts, Math, AHS, 
+%   Geography or Science) address your letter to Mr. B. Lumsden, 
+%   Director, Co-operative Education \& Career Services.  If it is not 
+%   your first report or if you are in Arts, Math, Geography or Science,
+%   direct your letter to the Department Chair. If you are in AHS, your
+%   letter should be addressed to the Associate Dean of your faculty.^^A
+%   \footnote{This statement was quoted on 24 April 2003.}
+% \end{quote}
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\chairaddress}
+% The |\chairaddress|\marg{text} command defines the address to which
+% you will send your report.  Like the |\address| command, you should
+% break lines appropriately.
+% \end{DescribeMacro}
+%
+% \subsubsection{Optional values} \label{sec:optvalues}
+%
+% Some commands are completely optional and do not have to be included
+% in the preamble.
+%
+% \begin{DescribeMacro}{\date}
+% The |\date|\marg{text} command defines an arbitrary date for the title
+% page and  the letter of submittal.  By default, today's date is used.  
+%
+% This is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\confidential}
+% The |\confidential|\marg{text} command defines the confidentiality of
+% the report.  Most reports do not require this command.  Refer to
+% Section 9.7 of the CESRM~\cite{ref:cesrm} for more information.
+% As an example, if the report is rated as ``Confidential-1'':
+% \begin{verbatim}\confidential{Confidential-1}\end{verbatim}
+% 
+% Please be aware that there are certain restrictions for confidential
+% reports.  You must speak with your field co-ordinator or faculty
+% before undertaking a confidential report.  Most confidential reports
+% are not marked until the following term.  If you work for certain
+% corporations, your work report cannot be confidential.  If you are in
+% certain faculties, your work report cannot be confidential.  For more
+% information, see section 9.7 of the CESRM~\cite{ref:cesrm} and Section
+% 5 of the E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg} guidelines.
+%
+% There are several levels of confidentiality:
+% \begin{description}
+% \item[Not confidential] These reports can be reviewed and evaluated by 
+%                         one or more markers.
+% \item[Confidential-1] These reports must be stored safely, and may only
+%                       be evaluated by one marker.  No duplicates may be
+%                       made.
+% \item[Confidential-2] One particular aspect of the report may be subject
+%                       to a non-disclosure agreement.  This must be
+%                       negotiated between the employer and a particular 
+%                       marker.
+% \item[Confidential-3] Confidential data contained in the report has been 
+%                       altered to permit disclosure.
+% \item[Confidential-4] The report cannot leave the employer and must be
+%                       evaluated by a fellow employee.
+% \end{description}
+% Confidential reports are not eligible for an Outstanding grade.
+% For a detailed discussion of the levels of confidentiality, see
+% ``Confidential work term reports''~\cite{ref:confwtr}.
+% \end{DescribeMacro}
+%
+% \subsubsection{Accessing values}
+%
+% \begin{DescribeMacro}{\theauthor}
+% \begin{DescribeMacro}{\thetitle}
+% \begin{DescribeMacro}{\theuwid}
+% \begin{DescribeMacro}{\theaddress}
+% \begin{DescribeMacro}{\theemployer}
+% \begin{DescribeMacro}{\theemployeraddress}
+% \begin{DescribeMacro}{\theschool}
+% \begin{DescribeMacro}{\thefaculty}
+% Each of these commands reproduce the text defined by the respective
+% command defined in the previous sections.  Although these macros
+% can be used anywhere in the report, they are used primarily in the 
+% \textbf{letter} environment, see Section \ref{sec:prelim}.
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \par^^A Insert a paragraph here to flush the floats.
+% \begin{DescribeMacro}{\theemail}
+% \begin{DescribeMacro}{\theterm}
+% \begin{DescribeMacro}{\theprogram}
+% \begin{DescribeMacro}{\thechair}
+% \begin{DescribeMacro}{\thechairaddress}
+% \begin{DescribeMacro}{\thedate}
+% \begin{DescribeMacro}{\theconfidential}
+% Here is a more comprehensive example:
+% \begingroup\center
+% \begin{minipage}[c]{\ExampleWidth-5mm}
+%   Hello, my name is J. Doe, and the title
+%   of my report is ``My first work report.''
+% \end{minipage}
+% \begin{minipage}{\textwidth-\ExampleWidth}
+%   \fvset{xrightmargin=0pt}
+%   \begin{Verbatim}
+%     \documentclass{uw-wkrpt}
+%     \title{My first work report}
+%     \author{J. Doe}
+%     % ...more definitions ...
+%     \begin{document}
+%
+%     Hello, my name is \theauthor, and the title
+%     of my report is ``\thetitle.''
+%
+%     \end{document}
+%   \end{Verbatim}
+% \end{minipage}
+% \endcenter\endgroup
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+%
+% \subsection{The document} \label{sec:document}
+%
+% \begin{DescribeEnv}{document}
+% Any text within the |\begin{document}| and |\end{document}| commands
+% are said to be within the \textbf{document} environment.  This text
+% will be typeset into the final output, and any text after the
+% environment will be ignored.
+% \end{DescribeEnv}
+%
+% \begin{DescribeMacro}{\maketitle}
+% To create the title page, the |\maketitle| command is used.  This
+% command should be invoked before any other text.  All the necessary
+% information is contained upon this page.  A clear cover should be used
+% to let this show through.
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \subsubsection{Preliminary pages} \label{sec:prelim}
+%
+% \begin{DescribeMacro}{\frontmatter}
+% The |\frontmatter| command is used to tell \LaTeX{} that the next
+% sections should be typeset as preliminary pages.  This typically
+% involves lower-case roman page numbers.
+%
+% This command is analogous to the standard \LaTeXe{} command in the 
+% \textsf{book} document class.
+% \end{DescribeMacro}
+%
+% \begin{DescribeEnv}{letter}
+% The \textbf{letter} environment does most of the difficult work
+% involved in writing the letter of submittal.  When |\begin{letter}| is
+% invoked, the headings and salutations are laid out.  On the next line,
+% the body of the message should be entered.  The environment is closed
+% with the |\end{letter}| command, which generates the boilerplate
+% disclaimer required by the guidelines, and generates the signature
+% block.
+%
+% The \textbf{letter} environment is able to get the information
+% required to generate the address blocks, the date, the salutation and
+% the signature because this information was defined in the preamble, see
+% section \ref{sec:preamble}.
+%
+% The body of the report is required to contain certain information.
+% According to Section 9.9.1 of the CESRM~\cite{ref:cesrm}, this includes:
+% \begin{itemize}
+% \item report title (use |\thetitle|) 
+% \item report number (first, second, etc.)
+% \item employer (use |\theemployer|)
+% \item previous academic term (use |\theterm|)
+% \item supervisor(s)
+% \item department(s) worked for
+% \item main activity of employer and department
+% \item purpose of report
+% \item acknowledgements and explanation of assistance
+% \item statement of confidentiality, if required
+% \end{itemize}
+%
+% Section 3.3 of the Math~\cite{ref:mwrg} guidelines also require that 
+% you include:
+% \begin{itemize}
+% \item your role in the company
+% \item brief description of your duties
+% \end{itemize}
+% As well, you must also left-justify your letter.  Although the Math 
+% department allows for memorandums of submittal, I do not support their 
+% creation.
+%
+% Section 2 of the E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg}
+% guidelines also  require that you:
+% \begin{itemize}
+% \item state who the report was written for
+% \end{itemize}
+%
+% This environment is analogous to the standard \LaTeXe{} environment
+% in the \textsf{letter} document class.
+% \end{DescribeEnv}
+%
+% \begin{DescribeMacro}{\section}
+% The |\section|\oarg{short}\marg{text} command is set to suppress any
+% section numbering in the preliminary pages.  The \meta{text} argument
+% specifies the section heading, and \meta{short} specifies the optional
+% short heading for inclusion in the ``Table of Contents''.
+%
+% Unlike |\section*|\marg{text}, these sections are mentioned
+% in the Table of Contents.  While Section 9.9.1 of the
+% CESRM~\cite{ref:cesrm} states
+% that preliminary pages do not appear in the Table of Contents, this is
+% not an issue since their are nor proper |\section|s in a CESRM report.
+% If there is a ``Summary'' section, it appears in the Body.  For a Math
+% report~\cite{ref:mwrg}, the ``Summary'' is the only section in the 
+% preliminary pages,
+% and it should be listed in the Table of Contents.  For 
+% E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg} reports, all 
+% preliminary sections are listed.
+%
+% Section 9.9.3 of the CESRM recommends that section numbers appear only
+% in the body of the report, see Section \ref{sec:body}.  This
+% recommendation becomes a requirement in other programs.
+%
+% As well, each |\section| is printed on a separate page.  This is
+% implied by the CESRM, and required for other programs.  Since it does
+% not hurt to put them on separate pages, it is always done.
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\tableofcontents}
+% \begin{DescribeMacro}{\listoffigures}
+% \begin{DescribeMacro}{\listoftables}
+% These commands generate a ``Table of Contents'', ``List of Figures''
+% and ``List of Tables'' respectively.  Each table is on a separate
+% page, and contains the appropriate list.
+%
+% Following Section 9.9.1 of the CESRM~\cite{ref:cesrm}, the Table of 
+% Contents lists all sections, and subsections of a report.  Each entry 
+% is connected by dotted tab leading to the page number, which is 
+% right-aligned.
+%
+% The ``List of Figures'' and ``List of Tables'' are not considered
+% sections, and are in included in the ``Table of Contents.''
+% For E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg} reports, however, 
+% they are considered sections and are listed.
+%
+% These commands are analogous to the standard \LaTeXe{} commands.
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+%
+% \subsubsection{The body} \label{sec:body}
+%
+% \begin{DescribeMacro}{\mainmatter}
+% The |\mainmatter| command is used to indicate the body of the report.
+% This turns section numbering back on, and causes an arabic page number to
+% appear on each page.
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\section}
+% \begin{DescribeMacro}{\subsection}
+% \begin{DescribeMacro}{\subsubsection}
+% The sectioning commands here will now provide numbered sections,
+% labelled with the appropriate heading.
+% \begingroup\center
+% \newcounter{oldsection}
+% \setcounter{oldsection}{\value{section}}
+% \newcounter{oldsubsection}
+% \setcounter{oldsubsection}{\value{subsection}}
+% \newcounter{oldsubsubsection}
+% \setcounter{oldsubsubsection}{\value{subsubsection}}
+% \setcounter{section}{0}
+% \renewcommand{\addcontentsline}[3]{}
+% \begin{minipage}[c]{\ExampleWidth-5mm}
+%   \section{Primary}
+%   \subsection{Primier}
+%   \subsubsection{Primo}
+%   \section{Secondary}
+%   \subsection{Deuxi\`eme}
+%   \subsubsection{Secundo}
+% \end{minipage}
+% \setcounter{section}{\value{oldsection}}
+% \setcounter{subsection}{\value{oldsubsection}}
+% \setcounter{subsubsection}{\value{oldsubsubsection}}
+% \begin{minipage}{\textwidth-\ExampleWidth}
+%   \fvset{xrightmargin=0pt}
+%   \begin{Verbatim}
+%     \begin{document}
+%
+%     \section{Primary}
+%     \subsection{Primier}
+%     \subsubsection{Primo}
+%     \section{Secondary}
+%     \subsection{Deuxi\`eme}
+%     \subsubsection{Secundo}
+%
+%     \end{document}
+%   \end{Verbatim}
+% \end{minipage}
+% \endcenter\endgroup
+%
+% These commands are analogous to the standard \LaTeXe{} commands.
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+% \end{DescribeMacro}
+%
+% \begin{DescribeEnv}{figure}
+% \begin{DescribeEnv}{table}
+% The \textbf{figure} and \textbf{table} environments are used to create
+% a ``float'' which encapsulates a graphic or a \textbf{tabular}
+% environment, respectively.
+%
+% By defaults, floats try to place themselves at the top of the current 
+% page, however, Section 9.9.3 of the CESRM~\cite{ref:cesrm} suggests 
+% that figures and tables appear only after they are referenced in the 
+% text.  Other programs require this behaviour.  Therefore, a float will 
+% now try to place itself immediately after the |\begin{figure}| or 
+% |\begin{table}| command.  If this is not possible, the float tries to 
+% place itself at the end of the current page.  If this is still not 
+% possible, it will center itself on a dedicated page.
+%
+% Figures must have their captions below, and tables must have their 
+% captions on top.  Section 9.9.3 of the CESRM~\cite{ref:cesrm}.
+% shows some examples.
+%
+% These environments are analogous to the standard \LaTeXe{}
+% environments.
+% \end{DescribeEnv}
+% \end{DescribeEnv}
+%
+% \subsubsection{Back matter}
+%
+% \begin{DescribeMacro}{\appendix}
+% The |\appendix| command indicates that section numbers should now be
+% reset, and in uppercase letters.  That is to say that the first
+% |\section| command will be listed as appendix ``A''.
+%
+% Although appendices appear in the back matter, this command should be
+% issues before the |\backmatter| command.
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\backmatter}
+% The |\backmatter| command is used to indicate the back of the report.
+% This turns section numbering off once more.
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \begin{DescribeMacro}{\bibliography}
+% The |\bibliography| command is used to insert the bibliography, or
+% ``References'' section.  This should come after the |\backmatter|
+% command, and refer to a B\textsc{ib}\hspace{-0.1ex}\TeX{} database.
+%
+% This command is analogous to the standard \LaTeXe{} command.
+% \end{DescribeMacro}
+%
+% \section{Implementation}
+% \iffalse
+%<*class>
+% \fi
+%
+% \subsection{Parsing options} \label{sec:parseopts}
+% Since this is a document class, the first thing to do is parse out the
+% options that were passed in.  To specify which program this work
+% report is written for, the author passes either \texttt{math},
+% \texttt{ece} or \texttt{se} options.  By default, we use the CESRM
+% guidelines~\cite{ref:cesrm}.
+%
+% So, the options are declared, and boolean flags of the form
+% |uwwkrpt@|\meta{program} are declared.
+%    \begin{macrocode}
+\newif\ifuwwkrpt@math \uwwkrpt@mathfalse
+\DeclareOption{math}{%
+  \uwwkrpt@mathtrue
+  \write10{([math] Mathematics report)}}
+\newif\ifuwwkrpt@ece \uwwkrpt@ecefalse
+\DeclareOption{ece}{%
+  \uwwkrpt@ecetrue
+  \write10{([ece] Electrical and Computer Engineering report)}}
+\newif\ifuwwkrpt@se \uwwkrpt@sefalse
+\DeclareOption{se}{%
+  \uwwkrpt@setrue
+  \write10{([se] Software Engineering report)}}
+%    \end{macrocode}
+%
+% \changes{v2.0}{2003/04/26}{Select between different programs'
+%                            guidelines.}
+%
+% Work reports must always be set in 12 pt.\ type.  Warn the author if
+% he specifies smaller type, and use 12 pt.\ nevertheless.
+%    \begin{macrocode}
+\DeclareOption{10pt}{\ClassWarning{uw-wkrpt}{%
+  You requested a 10pt font but reports must be 12pt}}
+\DeclareOption{11pt}{\ClassWarning{uw-wkrpt}{%
+  You requested a 11pt font but reports must be 12pt}}
+%    \end{macrocode}
+%
+% \changes{v2.0}{2003/04/25}{Enforce 12 pt.\ type.}
+%
+% Finally, we declare a |blockletter| option that formats the
+% letter of submittal in block format.  The default letter format 
+% is modified block, which correspondes to |modifiedletter|.
+%    \begin{macrocode}
+\newcommand{\@blockletter}{}
+\DeclareOption{modifiedletter}{%
+  \newcommand{\@blockletter}{}}
+\DeclareOption{blockletter}{%
+  \newcommand{\@blockletter}{\setlength{\parindent}{0pt}}}
+%    \end{macrocode}
+%
+% All of the options specific to this class are declared.  The rest of
+% the options will be passed to the standard \LaTeXe{} \textsf{article}
+% document class, the options processed, and the \textsf{article} class 
+% loaded.  
+%    \begin{macrocode}
+\DeclareOption*{\PassOptionsToClass {\CurrentOption}{article}}
+\ProcessOptions
+\LoadClass[titlepage,12pt]{article}
+%    \end{macrocode}
+%
+% To parse the required arguments, the \textsf{ifthen} package is loaded.
+% This way, the standard \LaTeX{} facilities can be used instead of the
+% \TeX{} |\if| primitives.
+%    \begin{macrocode}
+\RequirePackage{ifthen}
+%    \end{macrocode}
+%
+% \subsection{Page margins}
+%
+% The standard North American paper size is U.S. letter, sized 8.5 by 11
+% inches.  This is the default.
+%
+% The left and right margins will be set to 1.5 inches wide; the top
+% and bottom margins will be set to 1.0 inches wide.  This is required
+% by Section 9.8.5 of the CESRM~\cite{ref:cesrm}.
+%
+% We piggy-back on the standard \textsf{fullpage} package, but use one
+% of the internal variables |\FP@margin|, so we need to declare this
+% length if it does not exist.
+%    \begin{macrocode}
+\RequirePackage{fullpage}
+\ifx\FP@margin\undefined
+  \newlength{\FP@margin}
+\fi
+\setlength{\FP@margin}{1.5in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2\FP@margin}
+\setlength{\oddsidemargin}{\FP@margin}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{\oddsidemargin}
+%    \end{macrocode}
+% \changes{v2.0}{2003/04/21}{Set margins correctly.}
+% \changes{v2.2}{2003/05/05}{Set top and bottom margins to 1 inch.}
+%
+% \subsection{Spacing}
+%
+% Spacing is rather important in this document, as there are several
+% requirements for line spacing.
+%
+% To facilitate changing from single-spaced to one-and-half-spaced
+% or double-spaced throughout the document, the \textsf{setspace} package 
+% is loaded.  See Section 9.8.5 of the CESRM~\cite{ref:cesrm}.
+%
+% For Mathematics students, their reports must be double-spaced (See Section
+% 3.1 of the Math guidelines~\cite{ref:mwrg}.)  For
+% Software Engineering students, their reports must be one-and-half-spaced
+% (See Section 2 of the SE guidelines~\cite{ref:sewrg}.)
+% \changes{v2.4}{2003/05/10}{Fixed one-and-half-spacing vs. double-spacing.}
+%    \begin{macrocode}
+\RequirePackage{setspace}
+\newcommand{\uwwkrpt@spacing}{\doublespacing}
+\ifthenelse{\boolean{uwwkrpt@se}}
+  {\renewcommand{\uwwkrpt@spacing}{\onehalfspacing}}{}
+%    \end{macrocode}
+%
+% Each paragraph must be followed by a blank line, see Section 9.8.5 of
+% the CESRM~\cite{ref:cesrm}.  Instead of introducing a completely blank 
+% line, which is hideous due to spacing issues, we space each paragraph 
+% apart by an ex-height.\footnote{This is the height of the lower-case
+% letter `x'.}
+%    \begin{macrocode}
+\newlength{\uwwkrpt@parskip}
+\setlength{\uwwkrpt@parskip}{1ex}
+\setlength{\parskip}{\uwwkrpt@parskip}
+%    \end{macrocode}
+% \changes{v2.0}{2003/04/21}{Set paragraph spacing correctly.}
+% \changes{v2.1}{2003/05/02}{Set a standard paragraph skip.}
+%
+% \subsection{Miscellaneous packages}
+%
+% The \textsf{url} package is also loaded, since it breaks
+% URLs\footnote{Uniform Resource Locators} and URIs\footnote{Uniforce
+% Resource Identifiers} across lines.  However, the default typewriter
+% font is unappealing in plain text, so it has been switched to
+% sans-serif.
+%    \begin{macrocode}
+\RequirePackage{url}
+\urlstyle{sf}
+%    \end{macrocode}
+%
+% \subsection{Manditory and optional values}
+%
+% We override the standard \LaTeX{} commands |\title|, |\author|, and
+% |\date|.  
+%
+% \begin{macro}{\title}
+% The title must be defined, and is therefore enforced.  See Section
+% \ref{sec:mandvalues}.
+%    \begin{macrocode}
+\renewcommand{\title}[1]{%
+  \renewcommand{\@title}{#1}%
+  \renewcommand{\@@title}{#1}}
+\newcommand{\@@title}{\ClassError{uw-wkrpt}%
+  {No \noexpand\title given}{}}
+%    \end{macrocode}
+% \changes{v2.0}{2003/04/26}{\LaTeXe{} style definitions.}
+% \end{macro}
+%
+% \begin{macro}{\author}
+% The author must be defined, and is therefore enforced.  See Section
+% \ref{sec:mandvalues}.
+%    \begin{macrocode}
+\renewcommand{\author}[1]{%
+  \renewcommand{\@author}{#1}%
+  \renewcommand{\@@author}{#1}}
+\newcommand{\@@author}{\ClassError{uw-wkrpt}%
+  {No \noexpand\author given}{}}
+%    \end{macrocode}
+% \changes{v2.0}{2003/04/26}{\LaTeXe{} style definitions.}
+% \end{macro}
+%
+% \begin{macro}{\date}
+% The date defaults to today's date.  This is still an optional command,
+% see Section \ref{sec:optvalues}.
+%    \begin{macrocode}
+\renewcommand{\date}[1]{%
+  \renewcommand{\@date}{#1}%
+  \renewcommand{\@@date}{#1}}
+\newcommand{\@@date}{\today}
+%    \end{macrocode}
+% \changes{v2.0}{2003/04/26}{\LaTeXe{} style definitions.}
+% \end{macro}
+%
+% \begin{macro}{\uwid}
+% \begin{macro}{\address}
+% \begin{macro}{\employer}
+% \begin{macro}{\employeraddress}
+% \begin{macro}{\school}
+% \begin{macro}{\faculty}
+% \begin{macro}{\email}
+% \begin{macro}{\term}
+% \begin{macro}{\program}
+% \begin{macro}{\chair}
+% \begin{macro}{\chairaddress}
+% New variables which are defined.  These, like the ones
+% above, are used to construct the title page.  As well, they can be
+% used to construct the letter of submittal.
+%
+% The following are manditory values, see Section \ref{sec:mandvalues}.
+%    \begin{macrocode}
+\newcommand{\uwid}[1]{\renewcommand{\@uwid}{#1}}
+  \newcommand{\@uwid}{\ClassError{uw-wkrpt}%
+    {No \noexpand\uwid given}{}}
+\newcommand{\address}[1]{\renewcommand{\@address}{#1}}
+  \newcommand{\@address}{\ClassError{uw-wkrpt}%
+    {No \noexpand\address given}{}}
+\newcommand{\employer}[1]{\renewcommand{\@employer}{#1}}
+  \newcommand{\@employer}{\ClassError{uw-wkrpt}%
+    {No \noexpand\employer given}{}}
+\newcommand{\employeraddress}[1]{\renewcommand{\@employeraddress}{#1}}
+  \newcommand{\@employeraddress}{\ClassError{uw-wkrpt}%
+    {No \noexpand\employeraddress given}{}}
+\newcommand{\school}[1]{\renewcommand{\@school}{#1}}
+  \newcommand{\@school}{\ClassError{uw-wkrpt}%
+    {No \noexpand\school given}{}}
+\newcommand{\faculty}[1]{\renewcommand{\@faculty}{#1}}
+  \newcommand{\@faculty}{\ClassError{uw-wkrpt}%
+    {No \noexpand\faculty given}{}}
+\newcommand{\email}[1]{\renewcommand{\@email}{#1}}
+  \newcommand{\@email}{\ClassError{uw-wkrpt}%
+    {No \noexpand\email given}{}}
+\newcommand{\term}[1]{\renewcommand{\@term}{\textsc{\lowercase{#1}}}}
+  \newcommand{\@term}{\ClassError{uw-wkrpt}%
+    {No \noexpand\term given}{}}
+\newcommand{\program}[1]{\renewcommand{\@program}{#1}}
+  \newcommand{\@program}{\ClassError{uw-wkrpt}%
+    {No \noexpand\program given}{}}
+\newcommand{\chair}[1]{\renewcommand{\@chair}{#1}}
+  \newcommand{\@chair}{\ClassError{uw-wkrpt}%
+    {No \noexpand\chair given}{}}
+\newcommand{\chairaddress}[1]{\renewcommand{\@chairaddress}{#1}}
+  \newcommand{\@chairaddress}{\ClassError{uw-wkrpt}%
+    {No \noexpand\chairaddress given}{}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\confidential}
+% |\confidential| is an optional value, see Section \ref{sec:optvalues}.
+% If it is empty, it will be ignored.  Since most reports are
+% non-confidential, this is the default value.
+%    \begin{macrocode}
+\newcommand{\confidential}[1]{\renewcommand{\@confidential}{#1}}
+  \newcommand{\@confidential}{}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thetitle}
+% \begin{macro}{\theauthor}
+% \begin{macro}{\thedate}
+% \begin{macro}{\theuwid}
+% \begin{macro}{\theaddress}
+% \begin{macro}{\theemployer}
+% \begin{macro}{\theemployeraddress}
+% \begin{macro}{\theschool}
+% \begin{macro}{\thefaculty}
+% \begin{macro}{\theemail}
+% \begin{macro}{\theterm}
+% \begin{macro}{\theprogram}
+% \begin{macro}{\thechair}
+% \begin{macro}{\thechairaddress}
+% The following commands are defined to access these values of these
+% new variables in case the author wishes to refer to them within the 
+% document.
+%    \begin{macrocode}
+\newcommand{\thetitle}{\@@title}
+\newcommand{\theauthor}{\@@author}
+\newcommand{\theuwid}{\@uwid}
+\newcommand{\theaddress}{\@address}
+\newcommand{\theemployer}{\@employer}
+\newcommand{\theemployeraddress}{\@employeraddress}
+\newcommand{\theschool}{\@school}
+\newcommand{\thefaculty}{\@faculty}
+\newcommand{\theemail}{\@email}
+\newcommand{\theterm}{\@term}
+\newcommand{\theprogram}{\@program}
+\newcommand{\thechair}{\@chair}
+\newcommand{\thechairaddress}{\@chairaddress}
+\newcommand{\thedate}{\@@date}
+\newcommand{\theconfidential}{\@confidential}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \subsection{Title page}
+%
+% We require the \textsf{textcase} package to provide the
+% |\MakeTextUppercase|\marg{text} command.
+%    \begin{macrocode}
+\RequirePackage{textcase}
+%    \end{macrocode}
+%
+% \begin{macro}{\maketitle}
+% The title page must be laid out in a certain format, for an example
+% see Figure 1 of Section 9.9.1 of the CESRM~\cite{ref:cesrm}.
+%    \begin{macrocode}
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+  \begin{singlespacing}
+  \let\footnotesize\small
+  \let\footnoterule\relax
+  \let \footnote \thanks
+  \begin{center}
+    {\large \MakeTextUppercase{\@school} \par \@faculty}%
+  \end{center}
+  \null\vfill%
+  \begin{center}%
+    {\huge \MakeTextUppercase{\@title} \par}%
+  \end{center}\par
+  \null\vfill%
+  \begin{center}%
+    {\large \@employer\\ \@employeraddress\par \textit{\@confidential}}%
+  \end{center}\par
+  \null\vfill%
+  \begin{center}%
+    {\large
+      Prepared by\\
+      \begin{tabular}[t]{c}%
+        \@author\\
+        ID \#\@uwid\\
+        \@email\\
+        \@term{} \@program
+      \end{tabular}\par}%
+    {\large \@date \par}%       % Set date in \large size.
+  \end{center}
+  \@thanks
+  \end{singlespacing}
+  \end{titlepage}%
+%    \end{macrocode}
+% After defining the title page, commands we no longer need are let go.
+%    \begin{macrocode}
+  \setcounter{footnote}{0}%
+  \global\let\thanks\@gobble
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+%    \end{macrocode}
+% \changes{v2.0}{2003/04/25}{Fixed \textbackslash thanks command.}
+% \end{macro}
+%
+% As well, this page should have no page numbering.
+%
+% \subsection{Letter of submittal}
+%
+% \begin{environment}{letter}
+% The \textbf{letter} environment simplifies the process of writing a
+% letter of submittal.
+%    \begin{macrocode}
+\newenvironment{letter}{%
+%    \end{macrocode}
+%
+% We turn off page numbering for the letter.  We use |\everyvbox| to
+% suppress the page numbering on every page.  This is much better than
+% trying to save the page numbering and then restore it.
+% \changes{v2.0}{2002/04/26}{Smarter page number suppression.}
+%    \begin{macrocode}
+  \everyvbox={\thispagestyle{empty}}%
+%    \end{macrocode}
+%
+% Using |\@setletterpagenum|, we decide on the logical page number for
+% the letter of submittal.  For the declaration of this macro, see
+% Section \ref{sec:toc}.
+%    \begin{macrocode}
+  \@setletterpagenum%
+%    \end{macrocode}
+%
+% Due to reasons I cannot comprehend, Section 3.3 of the Math
+% guidelines~\cite{ref:mwrg} requires that the letter of submittal be
+% left-justified.
+%    \begin{macrocode}
+  \ifthenelse{\boolean{uwwkrpt@math}}
+    {\raggedright}{}
+%    \end{macrocode}
+%
+% Using |\@blockletter|, we decide whether we should be using modified
+% block layout, or full block.  For the declaration of this macro, see
+% Section \ref{sec:parseopts}.
+%    \begin{macrocode}
+  \@blockletter%
+%    \end{macrocode}
+%
+% \changes{v2.0}{2003/04/26}{New options for letter formats.}
+%
+% Then, the letter is set to single-spaced, since it is not part of the
+% report; but rather an insert.
+%    \begin{macrocode}
+  \singlespacing%
+%    \end{macrocode}
+%
+% The header block is created.  First, the author and the author's
+% address; then the current date; then the receiver of the report and
+% his address; and finally the salutation.
+%    \begin{macrocode}
+  \noindent\@@author\\\@address\par\noindent%
+  \@@date \par\noindent%
+  \@chair, Chair\\*\@chairaddress\par\noindent%
+  Dear \@chair:%
+%    \end{macrocode}
+%
+% Create a subject line, much like formal business letters of old.
+%    \begin{macrocode}
+  \begin{center}\textbf{Re: Submission of my work term report.}\end{center}}
+%    \end{macrocode}
+%
+% The author types her letter, and mentions all the things she is
+% required to mention.  See Section \ref{sec:prelim} for a full list.
+%
+% When she is done, she ends the environment.  This triggers the
+% disclaimer boilerplate, required by Section 9.9.1 of the
+% CESRM~\cite{ref:cesrm}.
+%    \begin{macrocode}
+  {\par I hereby confirm that I have received no further help other 
+  than what is mentioned above in writing this report.
+%    \end{macrocode}
+%
+% The E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg} guidelines require
+% an additional boilerplate message.  I will include this boilerplate in
+% the Math report, even though it does not require it.
+%    \begin{macrocode}
+  \ifthenelse{\boolean{uwwkrpt@ece}
+              \or \boolean{uwwkrpt@math}
+              \or \boolean{uwwkrpt@se}}
+    {I also confirm that this report has not been previously submitted 
+    for academic credit at this or any other academic institution.}
+%    \end{macrocode}
+%
+% In other programs, the following boilerplate is required.  See Section
+% 9.9.1 of the CESRM~\cite{ref:cesrm}.
+%    \begin{macrocode}
+    {This report was written entirely by me and has not received
+    any previous academic credit at this or any other institution.}
+%    \end{macrocode}
+%
+% The Faculty of Mathematics has a special request, since they ask
+% employers to perform technical marking.  It is included after the
+% legal boilerplate.  See Figure 4 of the Math guidelines~\cite{ref:mwrg}.
+%    \begin{macrocode}
+  \ifthenelse{\boolean{uwwkrpt@math}}{%
+    \par The Faculty of Mathematics requests that you evaluate this report
+    for command of topic and technical content/analysis.  Following your
+    assessment, the report, together with your evaluation, will be submitted
+    to the Math Undergrad Office for evaluation on campus by qualified
+    work report markers.  The combined marks will determine whether the
+    report will receive credit and whether it will be considered for an
+    award.
+    \par I would like to thank you for your assistance in preparing this
+    document.}{}%
+%    \end{macrocode}
+%
+% \changes{v2.0}{2003/04/26}{Legal boilerplate for each program.}
+%
+% With the legal requirements completed, the signature block can be
+% generated.  The signature line is only 3 inches long and 0.3 in tall,
+% but that should be sufficient for most purposes.  To satisfy Section
+% 9.1 of the CESRM~\cite{ref:cesrm}, the student's name and ID are
+% listed below the signature line.
+%    \begin{macrocode}
+  \par\noindent
+  \begin{minipage}{\textwidth}
+  \setlength{\parskip}{\uwwkrpt@parskip}
+  \vspace*{\uwwkrpt@parskip}
+  Yours sincerely,\\*%
+  \rule{0in}{0.3in}\\*{\hrule \@width 3in}%
+  \noindent\@@author, \@uwid
+  \par\noindent
+  Encl.%
+  \end{minipage}
+%    \end{macrocode}
+%
+% \changes{v2.2}{2003/05/02}{Keep the signature block together.}
+%
+% Now that the letter is done, we set the correct page number for pages
+% that follow the letter, and then restore double-spacing.
+%    \begin{macrocode}
+  \@setpostletterpagenum\uwwkrpt@spacing%
+%    \end{macrocode}
+%
+% All the excess variables that were used can now be let go.
+%    \begin{macrocode}
+  \global\let\@@author\@empty
+  \global\let\@@title\@empty
+  \global\let\@@date\@empty
+  \global\let\uwid\relax
+  \global\let\@uwid\@empty
+  \global\let\email\relax
+  \global\let\@email\@empty
+  \global\let\employer\relax
+  \global\let\@employer\@empty
+  \global\let\employeraddress\relax
+  \global\let\@employeraddress\@empty
+  \global\let\address\relax
+  \global\let\@address\@empty
+  \global\let\chair\relax
+  \global\let\@chair\@empty
+  \global\let\chairaddress\relax
+  \global\let\@chairaddress\@empty
+  \global\let\school\relax
+  \global\let\@school\@empty
+  \global\let\faculty\relax
+  \global\let\@faculty\@empty
+  \global\let\term\relax
+  \global\let\@term\@empty
+  \global\let\program\relax
+  \global\let\@program\@empty
+  \global\let\confidential\relax
+  \global\let\@confidential\@empty
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \subsection{Formatting sections}
+% We shall emulate the |\frontmatter|, |\mainmatter|, and |\backmatter|
+% commands from the \textsf{book} document class.  Front matter pages 
+% are numbered with roman numerals; main and back matter pages are 
+% numbered with arabic numerals.  See Section 9.8.5 of the
+% CESRM~\cite{ref:cesrm}.
+%
+% In the front and back matter, the |\section| command does not generate
+% headers with section numbers, but does enter them into the Table of
+% Contents.
+%
+% \begin{macro}{\frontmatter}
+% A fresh page is started, the sections are unnumbered, and the page
+% numbers are lower-case roman numberals.
+%    \begin{macrocode}
+\newcommand{\frontmatter}{%
+  \clearpage
+  \@notmainsect%
+  \pagenumbering{roman}%
+  \uwwkrpt@spacing%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mainmatter}
+% A fresh page is started, the sections are numbered, and the page
+% numbers are arabic numerals.
+%    \begin{macrocode}
+\newcommand{\mainmatter}{%
+  \clearpage
+  \@mainsect%
+  \pagenumbering{arabic}%
+%    \end{macrocode}
+%
+% Section 3.1 of the Math guidelines~\cite{ref:mwrg} state that numbered 
+% sections should not have page breaks between them.  This is why we
+% restore |\section| to its original form.
+%    \begin{macrocode}
+  \ifthenelse{\boolean{uwwkrpt@math}}{\let\section\section@rig}
+%    \end{macrocode}
+% \begin{macro}{\dotzero}
+% \begin{macro}{\@secdotzerostart}
+% \begin{macro}{\@secdotzeroend}
+% The Math guidelines~\cite{ref:mwrg} imply that numbered |\section|s 
+% must be of the form ``1.0'', not the default ``1''.
+%
+%    \begin{macrocode}
+  \global\def\dotzero{}
+  \global\def\@secdotzerostart##1{}
+  \global\def\@secdotzeroend##1{}
+  \ifthenelse{\boolean{uwwkrpt@math}}{%
+    \renewcommand{\@secdotzerostart}[1]{%
+      \let\quad@rig\quad
+      \ifthenelse{\equal{##1}{section}}{%
+        \renewcommand{\quad}{.0\quad@rig}%
+        \renewcommand{\dotzero}{.0}}{\renewcommand{\dotzero}{}}
+    }
+    \renewcommand{\@secdotzeroend}[1]
+      {\ifthenelse{\equal{##1}{section}}{\let\quad\quad@rig}}
+  }{}%
+%    \end{macrocode}
+%
+% \begin{macro}{\@appendixtitle}
+%
+% The E\&CE guidelines apparently want appendix titles to be ``Appendix A''.
+% This is merely shown by example.  I suspect that the Software Engineering
+% people may also have this, but it is also not explicit.
+%
+%    \begin{macrocode}
+  \global\def\@appendixtitle{}
+}
+%    \end{macrocode}
+% \end{macro}
+% \changes{v2.6}{2003/05/20}{`Appendix' should prefix appendix numbers.}
+% \end{macro}
+% \changes{v2.3}{2003/05/09}{Numbered sections end in ``.0'' in Math.}
+% \end{macro}
+% \end{macro}
+% \changes{v2.3}{2003/05/09}{Numbered sections don't have page breaks in Math.}
+% \end{macro}
+%
+% \begin{macro}{\appendix}
+% The page numbers turn Roman here.  The only change is that for Math,
+% we eliminate the ``.0'' trailer, as ``Section A.0'' looks silly.
+%    \begin{macrocode}
+\let\appendix@rig\appendix
+\renewcommand{\appendix}{%
+  \@mainsect%
+  \ifthenelse{\boolean{uwwkrpt@math}}{%
+    \renewcommand{\@secdotzerostart}[1]{\renewcommand{\dotzero}{}}
+    \renewcommand{\@secdotzeroend}[1]{}
+    }{}%
+  \ifthenelse{\boolean{uwwkrpt@ece}}
+    {\renewcommand{\@appendixtitle}{Appendix }}{}
+  \appendix@rig%
+}
+%    \end{macrocode}
+% \changes{v2.3}{2003/05/09}{Numbered sections end in ``.0'' in Math.}
+% \changes{v2.5}{2003/05/10}{Fix section numbering in Appendices.}
+% \changes{v2.6}{2003/05/20}{`Appendix' should prefix appendix numbers.}
+% \end{macro}
+%
+% \begin{macro}{\backmatter}
+% A fresh page is started, and the sections are unnumbered.
+%    \begin{macrocode}
+\newcommand{\backmatter}{%
+  \clearpage
+  \@notmainsect%
+  \ifthenelse{\boolean{uwwkrpt@math}}%
+    {\renewcommand{\section}{\clearpage\section@rig}}{}%
+}
+%    \end{macrocode}
+% \changes{v2.3}{2003/05/09}{Numbered sections don't have page breaks in Math.}
+% \end{macro}
+%
+% \begin{environment}{summary}
+% Much like the \textbf{abstract} environment in standard \LaTeX, the
+% \textbf{summary} environment should be used for typesetting summaries.
+% However, all it does is suppress the section numbers.  This
+% environment should only be used by people following the
+% CESRM~\cite{ref:cesrm} guidelines.  Other programs place their
+% ``Executive Summary'', ``Summary'', or ``Abstract'' in different
+% places.
+%    \begin{macrocode}
+\newenvironment{summary}
+  {\@notmainsect}
+  {\@mainsect}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{macro}{\@notmainsect}
+% This is the macro that turns off section numbers.  It does this by
+% redefining certain functions to be much simpler, which implies that it
+% no longer compensates from the prefixed number.
+%
+% This macro was inspired by the standard \LaTeX{} \textsf{book} class.
+%    \begin{macrocode}
+\newcommand{\@notmainsect}{%
+  \def\@sect##1##2##3##4##5##6[##7]##8{%
+    \@tempskipa ##5\relax
+    \ifdim \@tempskipa>\z@
+      \begingroup
+        ##6{%
+          \@hangfrom{\hskip ##3}%
+            \interlinepenalty \@M ##8\@@par}%
+      \endgroup
+      \csname ##1mark\endcsname{##7}%
+      \addcontentsline{toc}{##1}{##7}%
+    \else
+      \def\@svsechd{%
+        ##6{\hskip ##3\relax
+        \@svsec ##8}%
+        \csname ##1mark\endcsname{##7}%
+        \addcontentsline{toc}{##1}{##7}}%
+    \fi
+    \@xsect{##5}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\@mainsect}
+% This is the macro that turns on section numbers.
+% It redefines certain functions to be exactly like their standard forms.
+%
+% This macro was inspired by the standard \LaTeX{} \textsf{book} class.
+% \begin{macrocode}
+\newcommand{\@mainsect}{%
+  \def\@sect##1##2##3##4##5##6[##7]##8{%
+    \ifnum ##2>\c@secnumdepth
+      \let\@svsec\@empty
+    \else
+      \refstepcounter{##1}%
+      \@secdotzerostart{##1}
+      \protected@edef\@svsec{\@appendixtitle\@seccntformat{##1}\relax}%
+      \@secdotzeroend{##1}
+    \fi
+    \@tempskipa ##5\relax
+    \ifdim \@tempskipa>\z@
+      \begingroup
+        ##6{%
+          \@hangfrom{\hskip ##3\relax\@svsec}%
+            \interlinepenalty \@M ##8\@@par}%
+      \endgroup
+      \csname ##1mark\endcsname{##7}%
+      \addcontentsline{toc}{##1}{%
+        \ifnum ##2>\c@secnumdepth \else
+          \protect\numberline{\@appendixtitle\csname the##1\endcsname\dotzero}
+          \protect\phantom{\@appendixtitle}%
+        \fi
+        ##7}%
+    \else
+      \def\@svsechd{%
+        ##6{\hskip ##3\relax
+        \@svsec ##8}%
+        \csname ##1mark\endcsname{##7}%
+        \addcontentsline{toc}{##1}{%
+          \ifnum ##2>\c@secnumdepth \else
+            \protect\numberline{\@appendixtitle\csname the##1\endcsname\dotzero}
+            \protect\phantom{\@appendixtitle}%
+          \fi
+          ##7}}%
+    \fi
+    \@xsect{##5}}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\section}
+% Every section must start on a separate page.  Overloading the
+% |\section| command ensures this.  Although the CESRM~\cite{ref:cesrm}
+% implies this, Math~\cite{ref:mwrg}, and Engineering demand this, 
+% see section 3.1 of the Math guidelines~\cite{ref:mwrg}; and
+% section 2 of the E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg}
+% guidelines.
+%    \begin{macrocode}
+\let\section@rig\section
+\renewcommand{\section}{\clearpage\section@rig}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Tables and Lists} \label{sec:toc}
+%
+% These functions are used to decide what page numbers are used for
+% the front matter section.
+%
+% \begin{macro}{\@setletterpagenum}
+% \begin{macro}{\@setpostletterpagenum}
+% Section 9.9.1, Figure 3, of the CESRM shows an example ``Table of
+% Contents'' that begins on page i.  We will take this as the correct
+% example.
+%    \begin{macrocode}
+\newcommand{\@setletterpagenum}{}
+\newcommand{\@setpostletterpagenum}{\setcounter{page}{0}}
+%    \end{macrocode}
+%
+% Section 9.8.5 of the CESRM~\cite{ref:cesrm} states that the ``Table of
+% Contents'' must start on page ii, contradicting Section 9.9.1 above.  
+% However, this does not take into account letters of submittal that are
+% longer than one page.  The following code is commented out as it makes 
+% no sense to follow this requirement.
+%    \begin{macrocode}
+%\newcommand{\@setletterpagenum}{}
+%\newcommand{\@setpostletterpagenum}{\setcounter{page}{1}}
+%    \end{macrocode}
+%
+% Section 3.1 of the Math guidelines~\cite{ref:mwrg} state that the title 
+% page is page i and the ``Table of Contents'' is page ii, because the 
+% letter of submittal is an insert, and not part of the report.
+%    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@math}}{%
+  \renewcommand{\@setletterpagenum}{\setcounter{page}{1}}
+  \renewcommand{\@setpostletterpagenum}{}
+}{}
+%    \end{macrocode}
+%
+% Section 2 of the E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg} 
+% guidelines require that the submittal letter be page ii.  
+% The ``Table of Contents'' then follow in logical order, after any
+% preliminary sections.
+%    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@ece} \or \boolean{uwwkrpt@se}}{%
+  \renewcommand{\@setletterpagenum}{\setcounter{page}{2}}
+  \renewcommand{\@setpostletterpagenum}{}
+}{}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{Table of contents}
+% In \LaTeX, the default name for a ``Table of Contents'' section is 
+% ``Contents''.  This is changed to follow Section 9.9.1 of the 
+% CESRM~\cite{ref:cesrm}.
+%    \begin{macrocode}
+\renewcommand{\contentsname}{Table of Contents}
+%    \end{macrocode}
+%
+% \begin{macro}{\tableofcontents}
+% The table should be single-spaced, as |\parskip| should give adequate
+% spacing between items.
+%    \begin{macrocode}
+\let\tableofcontents@rig\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \clearpage
+  \begin{singlespacing}
+  \setlength{\parskip}{0pt}
+  \tableofcontents@rig\par
+  \end{singlespacing}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% Between the heading of each section, and the right-justified page
+% numbers, there should be dotted tab leaders to lead the eye across the
+% table.  By default, sections did not have this behaviour, although
+% subsections did.  The following code makes it apply to all.
+%    \begin{macrocode}
+\renewcommand*\l@section[2]{%
+    \ifnum \c@tocdepth >\m@ne
+      \addpenalty{-\@highpenalty}%
+      \vskip 1.0em \@plus\p@
+      \setlength\@tempdima{1.5em}%
+      \begingroup
+        \parindent \z@ \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode \bfseries
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+        #1\nobreak\
+          \leaders\hbox{$\m@th
+          \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+          mu$}\hfil\nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+        \penalty\@highpenalty
+      \endgroup
+    \fi%
+  }
+%    \end{macrocode}
+%
+% \subsubsection{Lists of stuff}
+%
+% \begin{macro}{\listoffigures@intoc}
+% \begin{macro}{\listoftables@intoc}
+% The ``List of Figures'' and ``List of Tables'' should not be 
+% mentioned in the Tables of Contents, according to Section 9.9.1 
+% of the CESRM~\cite{ref:cesrm}.  This is the default behaviour for
+% \LaTeX{}.
+%    \begin{macrocode}
+\newcommand{\listoffigures@intoc}{\relax}
+\newcommand{\listoftables@intoc}{\relax}
+%    \end{macrocode}
+%
+% However, Section 2 of the E\&CE~\cite{ref:ecewrg} and the
+% SE~\cite{ref:sewrg} guidelines state that they must be listed.  
+% So we add the ``List of Figures'' and ``List of Tables'' to the 
+% ``Table of Contents''.
+%    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@ece} \or \boolean{uwwkrpt@se}}{%
+  \renewcommand{\listoffigures@intoc}{%
+    \addcontentsline{toc}{section}{List of Figures}}
+  \renewcommand{\listoftables@intoc}{%
+    \addcontentsline{toc}{section}{List of Tables}}
+}{}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\listoffigures}
+% We ensure that the ``List of Figures'' is on a separate page and
+% single-spaced. The spacing provided by |\parskip| is sufficient. 
+% Also included is |\listoffigures@intoc| to respect the settings above.
+%    \begin{macrocode}
+\let\listoffigures@rig\listoffigures
+\renewcommand{\listoffigures}{%
+  \clearpage
+  \begin{singlespacing}
+  \listoffigures@rig \listoffigures@intoc%
+  \end{singlespacing}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\listoftables}
+% The ``List of Tables'' should behave exactly as the ``List of
+% Figures''.
+%    \begin{macrocode}
+\let\listoftables@rig\listoftables
+\renewcommand{\listoftables}{%
+  \clearpage
+  \begin{singlespacing}
+  \listoftables@rig \listoftables@intoc%
+  \end{singlespacing}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Tables and figures}
+%
+% Save the original table and figure environments so that they can be
+% overridden.  Notice that the |\endtable| command is an implementation
+% dependant part of \LaTeX{}.
+%    \begin{macrocode}
+\let\table@rig\table
+\let\endtable@rig\endtable
+\let\figure@rig\figure
+\let\endfigure@rig\endfigure
+%    \end{macrocode}
+%
+% \begin{environment}{figure}
+% \begin{environment}{table}
+% According to Section 9.9.3 of the CESRM~\cite{ref:cesrm}, Figures
+% and tables must be on their own page after they have been referenced
+% in the text.  The only way to guarantee this is to change the default 
+% \meta{loc} argument in |\begin{table}|\oarg{loc} to |[p]|.
+%    \begin{macrocode}
+\renewenvironment{figure}[1][p]{\begin{figure@rig}[#1]}{\end{figure@rig}}
+\renewenvironment{table}[1][p]{\begin{table@rig}[#1]}{\end{table@rig}}
+%    \end{macrocode}
+%
+% According to Section 3.4 of the Math guidelines~\cite{ref:mwrg};
+% and Section 2 of the E\&CE~\cite{ref:ecewrg} and the
+% SE~\cite{ref:sewrg} guidelines, figures and tables must appear
+% after they are referenced in the text.  The only way to guarantee this 
+% is to change the default \meta{loc} argument to |[htbp]|.  See Section
+% \ref{sec:body} for more information.
+%    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@ece} 
+            \or \boolean{uwwkrpt@math} 
+            \or \boolean{uwwkrpt@se}}{%
+  \renewenvironment{figure}[1][htbp]{\begin{figure@rig}[#1]}{\end{figure@rig}}
+  \renewenvironment{table}[1][htbp]{\begin{table@rig}[#1]}{\end{table@rig}}
+}{}
+%    \end{macrocode}
+% \end{environment}
+% \end{environment}
+%
+% \subsection{References}
+%
+% Every paper needs a ``References'' section.  Section 9.9.5 of the
+% CESRM~\cite{ref:cesrm} does not set any bibliography style.  Section 2
+% of the E\&CE~\cite{ref:ecewrg} and the SE~\cite{ref:sewrg} guidelines
+% require the use of the IEEE Computer Society
+% style~\cite{ref:ieeecsbib}.  The Math guidelines~\cite{ref:mwrg}
+% appear to specify a style similar to the IEEE's.
+%
+% The IEEE Transactions bibliography style is almost identical to that
+% of the IEEE Computer Society style.  An implementation of this ships
+% with almost every \LaTeX{} installation, so we will call that instead.
+% The only difference is that |@ELECTRONIC{}| does not exist as a type
+% of citation, but this can be emulated with |@MISC{}|.
+%    \begin{macrocode}
+\bibliographystyle{ieeetr}
+%    \end{macrocode}
+%
+% In the future, I may consider adding support for the more recent IEEE
+% Transactions style, but only after it ships with the major \TeX{}
+% distributions.  As well, I would consider using any styles that the
+% IEEE Computer Society implement.
+%
+% \begin{macro}{\bibliography}
+% Add the References section to the Table of Contents.  As well, make it 
+% single spaced.  
+%    \begin{macrocode}
+\let\bib@rig\bibliography
+\renewcommand{\bibliography}[1]{%
+  \clearpage
+  \begin{singlespacing}
+  \bibliography@intoc \bib@rig{#1}\par
+  \end{singlespacing}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\bibliography@intoc}
+% According to Section 9.9.1 of the CESRM~\cite{ref:cesrm}, the
+% References section is actually a section that comes before the
+% Appendices.
+%    \begin{macrocode}
+\newcommand{\refn@me}{References}
+\newcommand{\bibliography@intoc}{%
+  \renewcommand{\refname}{%
+    \addtocounter{section}{1}%
+    \arabic{section}\hspace{2.5ex}\refn@me%
+    \addcontentsline{toc}{section}{%
+      \numberline{\arabic{section}}{\refn@me}}}%
+}
+%    \end{macrocode}
+%
+% However the Math~\cite{ref:mwrg}, E\&CE~\cite{ref:ecewrg}, and
+% SE~\cite{ref:sewrg} guidelines state that the 
+% |\bibliography|\marg{file} should come after |\backmatter|, since 
+% it should not have a section number.
+%    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@ece} 
+            \or \boolean{uwwkrpt@math} 
+            \or \boolean{uwwkrpt@se}}{%
+  \renewcommand{\bibliography@intoc}{%
+      \addcontentsline{toc}{section}{\refn@me}}%
+}{}
+%    \end{macrocode}
+% \end{macro}
+% \iffalse
+%</class>
+% \fi
+% \iffalse
+%<*legacy-ece>
+% \fi
+%
+% \subsection{Legacy code}
+%
+% The following code is to retain compatibility with the old
+% \textsf{uw-ece-workreport} document class.  It merely provides a stub
+% that calls \textsf{uw-wkrpt} with the |[ece]| option.
+%
+% This document class will be depreciated in \textsf{uw-wkrpt} 3.0.
+%    \begin{macrocode}
+\ClassWarning{uw-ece-workreport}{%
+  The `uw-ece-workreport' class is now ^^J%
+  deprecated.  Use `\string\usepackage[ece]{uw-wkrpt}' instead}
+\DeclareOption*{\PassOptionsToClass {\CurrentOption}{uw-wkrpt}}
+\ProcessOptions
+\LoadClass[ece]{uw-wkrpt}
+\newcommand{\UWECEWorkReportVersion}{2.0}
+%    \end{macrocode}
+% \iffalse
+%</legacy-ece>
+% \fi
+% \begin{thebibliography}{99}
+% \bibitem{ref:lamport}
+% L. Lamport and D. Dibby (Illustrator),
+% \textit{\LaTeX{}: a document preparation system.}
+% Reading, MA: Addison-Wesley, second ed., 1994.
+% \bibitem{ref:cesrm} 
+% University of Waterloo, Co-operative education \& career services,
+% ``Co-operative education student reference manual.''
+% \url{http://www.cecs.uwaterloo.ca/manual/}
+% (current 24 Apr. 2003.)
+% \bibitem{ref:mwrg} 
+% University of Waterloo, Math undergrad office,
+% ``Faculty of mathematics work report guidelines.''
+% \url{http://www.math.uwaterloo.ca/navigation/Current/workreport/index.html}
+% (current 26 Apr. 2003.)
+% \bibitem{ref:ecewrg} 
+% W. M. Loucks PEng, G. H. Freeman, and J.A. Bary PEng,
+% ``E\&CE work term report guidelines.''
+% \url{http://www.ece.uwaterloo.ca/~wtrc/WrkTrmRpt.html}
+% (current 24 Apr. 2003.)
+% \bibitem{ref:sewrg} 
+% M. Armstrong, J. Atlee, W. M. Loucks PEng, G. H. Freeman, and J.A. Bary PEng,
+% ``Software engineering work report guidelines''
+% \url{http://www.softeng.uwaterloo.ca/Current/work_report_guidelines.htm}
+% (current 24 Apr. 2003.)
+% \bibitem{ref:confwtr} 
+% W. M. Loucks PEng,
+% ``Confidential work term reports.''
+% \url{http://www.pads.uwaterloo.ca/Wayne.Loucks/Service/confidential/page1.html}
+% (current 26 Apr. 2003.)
+% \bibitem{ref:ieeecsbib}
+% IEEE Computer Society Press, 
+% ``CS Style Guide: References''
+% \url{http://www.computer.org/author/style/refer.htm}
+% (current 1 Nov. 2001.)
+% \end{thebibliography}
+% \Finale
+\endinput
+% vim:et:sw=2 ft=tex
