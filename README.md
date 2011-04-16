@@ -1,7 +1,14 @@
 # uw-wkrpt
 
-This is a LaTeX document class to make you life easier when writing
-work term reports for the University of Waterloo.
+This is a LaTeX document class to make you life easier when writing work term reports for the University of Waterloo.
+
+This class was originally written by Simon Law, and was available at: http://www.eng.uwaterloo.ca/~sfllaw/programs/uw-wkrpt/. That page no longer exists. 
+
+I have made some improvements and updates to bring this class more in line with the current work report guidelines. If you notice any issues or inconsistencies with the guidlines, please let me know, or send a pull request!
+
+Please read INSTALL.md for installation/usage instructions.
+
+# LaTeX Info
 
 If you do not know LaTeX, please learn! It is not too
 difficult to use, and is really quite helpful. You can read the
@@ -12,9 +19,34 @@ You can also find more information on-line.  There is a FAQ
 at: http://faq.tug.org and an page listing documentation for beginners
 at: http://www.tug.org/begin.html
 
-This class was originally written by Simon Law, and was available at: http://www.eng.uwaterloo.ca/~sfllaw/programs/uw-wkrpt/. That page no longer exists. 
+# Installation
 
-I have made some improvements and updates to bring this class more in line with the current work report guidelines. If you notice any issues or inconsistencies with the guidlines, please let me know, or send a pull request!
+uw-wkrpt now has an installation system.  If you are on a Unix-like
+system, and have a complete TeX system, find where your texmf root is.
+This should typically be /usr/share/texmf which implies that installing
+is as easy as running:
+
+    # make DESTDIR=/usr/share install
+
+On a Windows system, to generate the cls file:
+
+    > latex uw-wkrpt.ins
+
+Note that if you change any of the *.dtx files, the cls will need to be regenerated.
+
+On some systems, PDFTeX is set to output to A4 paper, even
+though we have set the default to letterpaper.  This is sad, and can be
+worked around.  If you are running Debian GNU/Linux, you should run
+texconfig and change the PAPER option in the XDVI, DVIPS, DVIPDFM, and
+PDFTEX settings.  Otherwise, find the "pdftex.cfg" file which usually
+lives in /etc/texmf/pdftex/pdftex.cfg.  Make sure it has these two
+lines:
+
+    page_width 8.5 true in
+    page_height 11 true in
+
+You will want to comment out any other instances of page_width and
+page_height by using the % character.
 
 # Files
 
@@ -42,12 +74,8 @@ line, just add ``\usepackage{foo}'', where ``foo'' is the package name.
 * acronym: for spelling out acronyms in full, the first time only.
 * longtable: for tabular environments that break pages.
 * tabularx: for tabular environments that know how wide they are.
-
-* ltxtable
-    for a merge of longtable and tabularx, which may not work.
-
-* times, mathptm
-    For using the Times font in your text and math.
+* ltxtable: for a merge of longtable and tabularx, which may not work.
+* times, mathptm: For using the Times font in your text and math.
 
 -- Simon Law <sfllaw@uwaterloo.ca>  Wed, 30 Apr 2003 19:34:41 -0400
 -- Casey Banner <cccbanne@engmail.uwaterloo.ca> Sat, 16 Apr 2011 14:28:31 -0400
