@@ -18,17 +18,14 @@ I have made some improvements and updates to bring this class more in line with 
 
 # Files
 
-* The README file is the one you are reading now.
-* The NEWS file is a list of interesting things that have changed
-  since the last release.
-* The INSTALL file tells you how to install and use this document 
-  class.
-* The ChangeLog file is a record of the changes made to the software.
-* COPYING contains a copy of the GNU General Public License.
+* The README.md file is the one you are reading now.
+* The NEWS file is a list of interesting things that have changed since the last release (before this class was under version control).
+* The INSTALL.md file tells you how to install and use this document class.
+* The ChangeLog file is a record of the changes made to the software (before this class was under version control).
+* LICENSE contains a copy of the GNU General Public License.
 * uw-wkrpt.ins is the docstrip installer.  Please see the INSTALL file.
-* uw-wkrpt.dtx is the docstrip document that contains the entire
-  uw-wkrpt package.
-* uw-wkrpt-*.tex are example documents written using uw-wkrpt.cls.  
+* uw-wkrpt.dtx is the docstrip document that contains the entire uw-wkrpt package.
+* uw-wkrpt-*.tex are example documents written using uw-wkrpt.cls. 
   It illustrates the way to write a document, and tries to adhere as 
   closely to the guidelines as possible.
 * uw-wkrpt.bib is the bibliography or references list that is imported 
