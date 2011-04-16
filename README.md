@@ -6,9 +6,7 @@ This class was originally written by Simon Law, and was available at: http://www
 
 I have made some improvements and updates to bring this class more in line with the current work report guidelines. If you notice any issues or inconsistencies with the guidlines, please let me know, or send a pull request!
 
-Please read INSTALL.md for installation/usage instructions.
-
-# LaTeX Info
+## LaTeX Info
 
 If you do not know LaTeX, please learn! It is not too
 difficult to use, and is really quite helpful. You can read the
@@ -19,7 +17,7 @@ You can also find more information on-line.  There is a FAQ
 at: http://faq.tug.org and an page listing documentation for beginners
 at: http://www.tug.org/begin.html
 
-# Installation
+## Installation
 
 To generate the class files, simply run:
 
@@ -55,7 +53,7 @@ lines:
 You will want to comment out any other instances of page_width and
 page_height by using the % character.
 
-# Examples
+## Examples
 
 There are several examples included:
 
@@ -64,7 +62,7 @@ There are several examples included:
 * uw-wkrpt-math.tex
 * uw-wkrpt-se.tex
 
-# Files
+## Files
 
 * The README.md file is the one you are reading now.
 * The NEWS file is a list of interesting things that have changed since the last release (before this class was under version control).
