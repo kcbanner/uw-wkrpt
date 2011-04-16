@@ -2,7 +2,7 @@
 
 This is a LaTeX document class to make you life easier when writing work term reports for the University of Waterloo.
 
-This class was originally written by Simon Law, and was available at: http://www.eng.uwaterloo.ca/~sfllaw/programs/uw-wkrpt/. That page no longer exists. 
+This class was originally written by Simon Law, and was available at: http://www.eng.uwaterloo.ca/~sfllaw/programs/uw-wkrpt/. It is now also available at: http://sfllaw.ca/programs/uw-wkrpt/
 
 I have made some improvements and updates to bring this class more in line with the current work report guidelines. If you notice any issues or inconsistencies with the guidlines, please let me know, or send a pull request!
 
@@ -21,18 +21,25 @@ at: http://www.tug.org/begin.html
 
 # Installation
 
-uw-wkrpt now has an installation system.  If you are on a Unix-like
-system, and have a complete TeX system, find where your texmf root is.
-This should typically be /usr/share/texmf which implies that installing
-is as easy as running:
+To generate the class files, simply run:
 
-    # make DESTDIR=/usr/share install
+    # make
+
+This will generate uw-wkrpt.cls, which you can use to write your work report.
 
 On a Windows system, to generate the cls file:
 
     > latex uw-wkrpt.ins
 
 Note that if you change any of the *.dtx files, the cls will need to be regenerated.
+
+
+uw-wkrpt now has an installation system.  If you are on a Unix-like
+system, and have a complete TeX system, find where your texmf root is.
+This should typically be /usr/share/texmf which implies that installing
+is as easy as running:
+
+    # make DESTDIR=/usr/share install
 
 On some systems, PDFTeX is set to output to A4 paper, even
 though we have set the default to letterpaper.  This is sad, and can be
@@ -47,6 +54,15 @@ lines:
 
 You will want to comment out any other instances of page_width and
 page_height by using the % character.
+
+# Examples
+
+There are several examples included:
+
+* uw-wkrpt-cecs.tex
+* uw-wkrpt-ece.tex
+* uw-wkrpt-math.tex
+* uw-wkrpt-se.tex
 
 # Files
 
