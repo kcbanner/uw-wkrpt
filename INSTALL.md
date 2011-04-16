@@ -1,5 +1,4 @@
-INSTALLATION
-------------
+# Installation
 
 uw-wkrpt now has an installation system.  If you are on a Unix-like
 system, and have a complete TeX system, find where your texmf root is.
@@ -8,7 +7,7 @@ is as easy as running:
 
     # make DESTDIR=/usr/share install
 
-	I have no idea how this will work on a Windows system.  I guess
+I have no idea how this will work on a Windows system.  I guess
 the best thing you can do is to extract the installer file, and then
 move things about.
 
@@ -17,7 +16,7 @@ move things about.
 I will ship pre-compiled PDF files for all the examples, in the hopes
 that you will be able to read the documentation, and figure it out.
 
-	On some systems, PDFTeX is set to output to A4 paper, even
+On some systems, PDFTeX is set to output to A4 paper, even
 though we have set the default to letterpaper.  This is sad, and can be
 worked around.  If you are running Debian GNU/Linux, you should run
 texconfig and change the PAPER option in the XDVI, DVIPS, DVIPDFM, and
@@ -32,3 +31,4 @@ You will want to comment out any other instances of page_width and
 page_height by using the % character.
 
 -- Simon Law <sfllaw@uwaterloo.ca>  Sun, 27 Apr 2003 00:48:07 -0400
+-- Casey Banner <cccbanne@engmail.uwaterloo.ca> Sat, 16 Apr 2011 14:28:31 -0400
