@@ -81,8 +81,8 @@ There are several examples included:
 # Other Useful Packages
 
 You may wish to load some other useful packages to make your life
-simpler, and your work report nicer.  After the ``\documentclass{uw-wkrpt}''
-line, just add ``\usepackage{foo}'', where ``foo'' is the package name.
+simpler, and your work report nicer.  After the `\documentclass{uw-wkrpt}`
+line, just add `\usepackage{foo}`, where `foo` is the package name.
 
 * acronym: for spelling out acronyms in full, the first time only.
 * longtable: for tabular environments that break pages.
