@@ -17,11 +17,11 @@
 %   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 %
 % \fi
-% \def\fileversion{v2.6}
-% \def\filedate{2003/05/20}
+% \def\fileversion{v2.7}
+% \def\filedate{2011/09/16}
 % \iffalse
 %<class>\NeedsTeXFormat{LaTeX2e}
-%<class>\ProvidesPackage{uw-wkrpt}[2003/05/20 v2.6 U. of Waterloo work reports]
+%<class>\ProvidesPackage{uw-wkrpt}[2011/09/16 v2.7 U. of Waterloo work reports]
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \documentclass[letterpaper]{ltxdoc}
@@ -50,7 +50,7 @@
 % \fi
 %
 % \StopEventually{\PrintIndex \PrintChanges}
-% \CheckSum{938}
+% \CheckSum{963}
 %
 % \DoNotIndex{\#,\$,\#,\&,\@,\\,\{,\},\^,\_,\~,\ }
 % \DoNotIndex{\addcontentsline, \addpenalty, \addtolength, \advance, \and}
@@ -128,7 +128,6 @@
 %^^A This doesn't work
 %^^A \GetFileInfo{uw-wkrpt.cls}
 %
-% \setcounter{page}{17}
 % \title{The \textsf{uw-wkrpt} document class\thanks{Version \fileversion, 
 %                                                    last revised \filedate}}
 % \author{Simon Law\thanks{\textsf{sfllaw@engmail.uwaterloo.ca}}}
@@ -750,6 +749,13 @@
 %<*class>
 % \fi
 %
+% To parse the required arguments, the \textsf{ifthen} package is loaded.
+% This way, the standard \LaTeX{} facilities can be used instead of the
+% \TeX{} |\if| primitives.
+%    \begin{macrocode}
+\RequirePackage{ifthen}
+%    \end{macrocode}
+%
 % \subsection{Parsing options} \label{sec:parseopts}
 % Since this is a document class, the first thing to do is parse out the
 % options that were passed in.  To specify which program this work
@@ -779,14 +785,26 @@
 %
 % Work reports must always be set in 12 pt.\ type.  Warn the author if
 % he specifies smaller type, and use 12 pt.\ nevertheless.
+% 
+% E\&CE guidelines requre work reports to be set in 11 pt.\ type.
+% 
 %    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@ece}}{%
+  \def\uwwkrpt@textsize{11pt}}{%
+  \def\uwwkrpt@textsize{12pt}}
+
 \DeclareOption{10pt}{\ClassWarning{uw-wkrpt}{%
-  You requested a 10pt font but reports must be 12pt}}
-\DeclareOption{11pt}{\ClassWarning{uw-wkrpt}{%
-  You requested a 11pt font but reports must be 12pt}}
+  You requested a 10pt font but reports must be \uwwkrpt@textsize}}
+
+\ifthenelse{\boolean{uwwkrpt@ece}}{%
+  \DeclareOption{12pt}{\ClassWarning{uw-wkrpt}{%
+    You requested a 12pt font but reports must be \uwwkrpt@textsize}}}{%
+  \DeclareOption{11pt}{\ClassWarning{uw-wkrpt}{%
+    You requested a 11pt font but reports must be \uwwkrpt@textsize}}}
 %    \end{macrocode}
 %
 % \changes{v2.0}{2003/04/25}{Enforce 12 pt.\ type.}
+% \changes{v2.7}{2011/09/16}{Enforce 11 pt.\ type for ECE reports.}
 %
 % Finally, we declare a |blockletter| option that formats the
 % letter of submittal in block format.  The default letter format 
@@ -806,14 +824,7 @@
 %    \begin{macrocode}
 \DeclareOption*{\PassOptionsToClass {\CurrentOption}{article}}
 \ProcessOptions
-\LoadClass[titlepage,12pt]{article}
-%    \end{macrocode}
-%
-% To parse the required arguments, the \textsf{ifthen} package is loaded.
-% This way, the standard \LaTeX{} facilities can be used instead of the
-% \TeX{} |\if| primitives.
-%    \begin{macrocode}
-\RequirePackage{ifthen}
+\LoadClass[titlepage,\uwwkrpt@textsize]{article}
 %    \end{macrocode}
 %
 % \subsection{Page margins}
@@ -825,23 +836,25 @@
 % and bottom margins will be set to 1.0 inches wide.  This is required
 % by Section 9.8.5 of the CESRM~\cite{ref:cesrm}.
 %
-% We piggy-back on the standard \textsf{fullpage} package, but use one
-% of the internal variables |\FP@margin|, so we need to declare this
-% length if it does not exist.
+% For ECE work reports, the left margin will be set to 1.5 inches wide;
+% the other margins will be 1.0 inches wide.
 %    \begin{macrocode}
-\RequirePackage{fullpage}
-\ifx\FP@margin\undefined
-  \newlength{\FP@margin}
-\fi
-\setlength{\FP@margin}{1.5in}
-\setlength{\textwidth}{\paperwidth}
-\addtolength{\textwidth}{-2\FP@margin}
-\setlength{\oddsidemargin}{\FP@margin}
-\addtolength{\oddsidemargin}{-1in}
-\setlength{\evensidemargin}{\oddsidemargin}
+\newlength{\marginl}
+\newlength{\marginr}
+\newlength{\margintb}
+
+\setlength{\marginl}{1.5in}
+\setlength{\marginr}{1.5in}
+\setlength{\margintb}{1in}
+
+\ifthenelse{\boolean{uwwkrpt@ece}}
+  {\setlength{\marginr}{1in}}{}
+
+\RequirePackage[top=\margintb, bottom=\margintb, left=\marginl, right=\marginr]{geometry}
 %    \end{macrocode}
 % \changes{v2.0}{2003/04/21}{Set margins correctly.}
 % \changes{v2.2}{2003/05/05}{Set top and bottom margins to 1 inch.}
+% \changes{v2.7}{2011/09/16}{Set margins correctly for E\&CE reports.}
 %
 % \subsection{Spacing}
 %
@@ -854,13 +867,13 @@
 %
 % For Mathematics students, their reports must be double-spaced (See Section
 % 3.1 of the Math guidelines~\cite{ref:mwrg}.)  For
-% Software Engineering students, their reports must be one-and-half-spaced
+% Software Engineering and ECE students, their reports must be one-and-half-spaced
 % (See Section 2 of the SE guidelines~\cite{ref:sewrg}.)
 % \changes{v2.4}{2003/05/10}{Fixed one-and-half-spacing vs. double-spacing.}
 %    \begin{macrocode}
 \RequirePackage{setspace}
 \newcommand{\uwwkrpt@spacing}{\doublespacing}
-\ifthenelse{\boolean{uwwkrpt@se}}
+\ifthenelse{\boolean{uwwkrpt@se} \or \boolean{uwwkrpt@ece}}
   {\renewcommand{\uwwkrpt@spacing}{\onehalfspacing}}{}
 %    \end{macrocode}
 %
@@ -1251,7 +1264,7 @@
 % Now that the letter is done, we set the correct page number for pages
 % that follow the letter, and then restore double-spacing.
 %    \begin{macrocode}
-  \@setpostletterpagenum\uwwkrpt@spacing%
+  \@setpostletterpagenum\uwwkrpt@spacing\newpage%
 %    \end{macrocode}
 %
 % All the excess variables that were used can now be let go.
@@ -1306,7 +1319,8 @@
   \clearpage
   \@notmainsect%
   \pagenumbering{roman}%
-  \uwwkrpt@spacing%
+  \ifthenelse{\boolean{uwwkrpt@ece}}{%
+  \singlespacing}{\uwwkrpt@spacing}%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1317,6 +1331,7 @@
 %    \begin{macrocode}
 \newcommand{\mainmatter}{%
   \clearpage
+  \uwwkrpt@spacing
   \@mainsect%
   \pagenumbering{arabic}%
 %    \end{macrocode}
@@ -1325,7 +1340,8 @@
 % sections should not have page breaks between them.  This is why we
 % restore |\section| to its original form.
 %    \begin{macrocode}
-  \ifthenelse{\boolean{uwwkrpt@math}}{\let\section\section@rig}
+  \ifthenelse{\boolean{uwwkrpt@math}}%
+    {\let\section\section@rig}
 %    \end{macrocode}
 % \begin{macro}{\dotzero}
 % \begin{macro}{\@secdotzerostart}
@@ -1397,9 +1413,12 @@
   \@notmainsect%
   \ifthenelse{\boolean{uwwkrpt@math}}%
     {\renewcommand{\section}{\clearpage\section@rig}}{}%
+  \ifthenelse{\boolean{uwwkrpt@ece}}%
+    {\singlespacing}%
 }
 %    \end{macrocode}
 % \changes{v2.3}{2003/05/09}{Numbered sections don't have page breaks in Math.}
+% \changes{v2.7}{2011/09/16}{Back matter is single-spaced in E\&CE.}
 % \end{macro}
 %
 % \begin{environment}{summary}
@@ -1499,11 +1518,11 @@
 % |\section| command ensures this.  Although the CESRM~\cite{ref:cesrm}
 % implies this, Math~\cite{ref:mwrg}, and Engineering demand this, 
 % see section 3.1 of the Math guidelines~\cite{ref:mwrg}; and
-% section 2 of the E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg}
-% guidelines.
+% SE~\cite{ref:sewrg} guidelines.
 %    \begin{macrocode}
 \let\section@rig\section
-\renewcommand{\section}{\clearpage\section@rig}
+\ifthenelse{\not \boolean{uwwkrpt@ece}}{
+  \renewcommand{\section}{\clearpage\section@rig}}{}
 %    \end{macrocode}
 % \end{macro}
 %

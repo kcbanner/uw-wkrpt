@@ -91,4 +91,7 @@ line, just add `\usepackage{foo}`, where `foo` is the package name.
 * times, mathptm: For using the Times font in your text and math.
 
 -- Simon Law <sfllaw@uwaterloo.ca>  Wed, 30 Apr 2003 19:34:41 -0400
+
 -- Casey Banner <cccbanne@engmail.uwaterloo.ca> Sat, 16 Apr 2011 14:28:31 -0400
+
+-- Cory Snider <corhere@gmail.com> Fri, 16 Sep 2011 01:13:02 -0400
