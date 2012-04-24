@@ -18,10 +18,10 @@
 %
 % \fi
 % \def\fileversion{v2.7}
-% \def\filedate{2011/09/16}
+% \def\filedate{2012/04/24}
 % \iffalse
 %<class>\NeedsTeXFormat{LaTeX2e}
-%<class>\ProvidesPackage{uw-wkrpt}[2011/09/16 v2.7 U. of Waterloo work reports]
+%<class>\ProvidesPackage{uw-wkrpt}[2012/04/24 v2.8 U. of Waterloo work reports]
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \documentclass[letterpaper]{ltxdoc}
@@ -50,7 +50,7 @@
 % \fi
 %
 % \StopEventually{\PrintIndex \PrintChanges}
-% \CheckSum{963}
+% \CheckSum{1116}
 %
 % \DoNotIndex{\#,\$,\#,\&,\@,\\,\{,\},\^,\_,\~,\ }
 % \DoNotIndex{\addcontentsline, \addpenalty, \addtolength, \advance, \and}
@@ -357,6 +357,11 @@
 % the author is in.
 % \end{DescribeMacro}
 %
+% \begin{DescribeMacro}{\userid}
+% The |\userid|\marg{text} command defines the author's student id (username).
+% \end{DescribeMacro}
+% \changes{v2.8}{2012/04/24}{Add \textbackslash userid command.}
+%
 % \begin{DescribeMacro}{\email}
 % The |\email|\marg{text} command defines the author's e-mail address.
 % \end{DescribeMacro}
@@ -389,6 +394,8 @@
 %   letter should be addressed to the Associate Dean of your faculty.^^A
 %   \footnote{This statement was quoted on 24 April 2003.}
 % \end{quote}
+% In Software Engineering, the letter of submittal should be addressed to
+% the Director of Software Engineering.
 % \end{DescribeMacro}
 %
 % \begin{DescribeMacro}{\chairaddress}
@@ -440,6 +447,10 @@
 %                       altered to permit disclosure.
 % \item[Confidential-4] The report cannot leave the employer and must be
 %                       evaluated by a fellow employee.
+% \item[SE-confidential] This is the only level of confidentiality for
+%                        Software Engineering reports. The report is placed in
+%                        an envelope marked ``SE-confidential'', and is treated
+%                        with care by the markers. No duplicates may be made.
 % \end{description}
 % Confidential reports are not eligible for an Outstanding grade.
 % For a detailed discussion of the levels of confidentiality, see
@@ -469,6 +480,7 @@
 % \end{DescribeMacro}
 % \end{DescribeMacro}
 % \par^^A Insert a paragraph here to flush the floats.
+% \begin{DescribeMacro}{\theuserid}
 % \begin{DescribeMacro}{\theemail}
 % \begin{DescribeMacro}{\theterm}
 % \begin{DescribeMacro}{\theprogram}
@@ -498,6 +510,7 @@
 %   \end{Verbatim}
 % \end{minipage}
 % \endcenter\endgroup
+% \end{DescribeMacro}
 % \end{DescribeMacro}
 % \end{DescribeMacro}
 % \end{DescribeMacro}
@@ -812,10 +825,15 @@
 %    \begin{macrocode}
 \newcommand{\@blockletter}{}
 \DeclareOption{modifiedletter}{%
-  \newcommand{\@blockletter}{}}
+  \renewcommand{\@blockletter}{}}
 \DeclareOption{blockletter}{%
-  \newcommand{\@blockletter}{\setlength{\parindent}{0pt}}}
+  \renewcommand{\@blockletter}{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{0.8em}}}
 %    \end{macrocode}
+%
+% \changes{v2.8}{2012/04/24}{Fix bug so letter format options work. Adjust the
+%                            spacing for `blockletter' format.}
 %
 % All of the options specific to this class are declared.  The rest of
 % the options will be passed to the standard \LaTeXe{} \textsf{article}
@@ -838,6 +856,8 @@
 %
 % For ECE work reports, the left margin will be set to 1.5 inches wide;
 % the other margins will be 1.0 inches wide.
+%
+% For SE work reports, all margins are set to 1.0 inches wide.
 %    \begin{macrocode}
 \newlength{\marginl}
 \newlength{\marginr}
@@ -847,14 +867,18 @@
 \setlength{\marginr}{1.5in}
 \setlength{\margintb}{1in}
 
-\ifthenelse{\boolean{uwwkrpt@ece}}
+\ifthenelse{\boolean{uwwkrpt@ece} \or \boolean{uwwkrpt@se}}
   {\setlength{\marginr}{1in}}{}
+
+\ifthenelse{\boolean{uwwkrpt@se}}
+  {\setlength{\marginl}{1in}}{}
 
 \RequirePackage[top=\margintb, bottom=\margintb, left=\marginl, right=\marginr]{geometry}
 %    \end{macrocode}
 % \changes{v2.0}{2003/04/21}{Set margins correctly.}
 % \changes{v2.2}{2003/05/05}{Set top and bottom margins to 1 inch.}
 % \changes{v2.7}{2011/09/16}{Set margins correctly for E\&CE reports.}
+% \changes{v2.8}{2012/04/24}{Set margins correctly for SE reports.}
 %
 % \subsection{Spacing}
 %
@@ -886,9 +910,11 @@
 \newlength{\uwwkrpt@parskip}
 \setlength{\uwwkrpt@parskip}{1ex}
 \setlength{\parskip}{\uwwkrpt@parskip}
+\ifthenelse{\boolean{uwwkrpt@se}}{\setlength{\parindent}{0.4in}}{}
 %    \end{macrocode}
 % \changes{v2.0}{2003/04/21}{Set paragraph spacing correctly.}
 % \changes{v2.1}{2003/05/02}{Set a standard paragraph skip.}
+% \changes{v2.8}{2012/04/24}{Increase the paragraph indent for SE reports.}
 %
 % \subsection{Miscellaneous packages}
 %
@@ -951,6 +977,7 @@
 % \begin{macro}{\employeraddress}
 % \begin{macro}{\school}
 % \begin{macro}{\faculty}
+% \begin{macro}{\userid}
 % \begin{macro}{\email}
 % \begin{macro}{\term}
 % \begin{macro}{\program}
@@ -980,6 +1007,9 @@
 \newcommand{\faculty}[1]{\renewcommand{\@faculty}{#1}}
   \newcommand{\@faculty}{\ClassError{uw-wkrpt}%
     {No \noexpand\faculty given}{}}
+\newcommand{\userid}[1]{\renewcommand{\@userid}{#1}}
+  \newcommand{\@userid}{\ClassError{uw-wkrpt}%
+    {No \noexpand\userid given}{}}
 \newcommand{\email}[1]{\renewcommand{\@email}{#1}}
   \newcommand{\@email}{\ClassError{uw-wkrpt}%
     {No \noexpand\email given}{}}
@@ -996,6 +1026,9 @@
   \newcommand{\@chairaddress}{\ClassError{uw-wkrpt}%
     {No \noexpand\chairaddress given}{}}
 %    \end{macrocode}
+% \changes{v2.8}{2012/04/24}{Add \textbackslash userid field.}
+%
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -1027,6 +1060,7 @@
 % \begin{macro}{\theemployeraddress}
 % \begin{macro}{\theschool}
 % \begin{macro}{\thefaculty}
+% \begin{macro}{\theuserid}
 % \begin{macro}{\theemail}
 % \begin{macro}{\theterm}
 % \begin{macro}{\theprogram}
@@ -1044,6 +1078,7 @@
 \newcommand{\theemployeraddress}{\@employeraddress}
 \newcommand{\theschool}{\@school}
 \newcommand{\thefaculty}{\@faculty}
+\newcommand{\theuserid}{\@userid}
 \newcommand{\theemail}{\@email}
 \newcommand{\theterm}{\@term}
 \newcommand{\theprogram}{\@program}
@@ -1052,6 +1087,7 @@
 \newcommand{\thedate}{\@@date}
 \newcommand{\theconfidential}{\@confidential}
 %    \end{macrocode}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -1078,6 +1114,8 @@
 % \begin{macro}{\maketitle}
 % The title page must be laid out in a certain format, for an example
 % see Figure 1 of Section 9.9.1 of the CESRM~\cite{ref:cesrm}.
+% There are minor changes to the Software Engineering format, but this is
+% mainly a matter of personal preference.
 %    \begin{macrocode}
 \renewcommand{\maketitle}{%
   \begin{titlepage}
@@ -1090,28 +1128,30 @@
   \end{center}
   \null\vfill%
   \begin{center}%
-    {\huge \MakeTextUppercase{\@title} \par}%
+    \ifthenelse{\boolean{uwwkrpt@se}}
+      {\LARGE \@title \par}{\huge \MakeTextUppercase{\@title} \par}%
   \end{center}\par
   \null\vfill%
   \begin{center}%
     {\large \@employer\\ \@employeraddress\par \textit{\@confidential}}%
   \end{center}\par
   \null\vfill%
-  \begin{center}%
-    {\large
-      Prepared by\\
+  \begin{center}{%
+    \ifthenelse{\boolean{uwwkrpt@se}}{\normalsize}{\large}
+    \ifthenelse{\boolean{uwwkrpt@se}}{\textbf{Prepared by}\\}{Prepared by\\}
       \begin{tabular}[t]{c}%
         \@author\\
-        ID \#\@uwid\\
-        \@email\\
+        \ifthenelse{\boolean{uwwkrpt@se}}
+          {Student ID: \@uwid\\ User ID: \@userid\\}{ID \#\@uwid\\ \@email\\}
         \@term{} \@program
       \end{tabular}\par}%
-    {\large \@date \par}%       % Set date in \large size.
+    {\ifthenelse{\not \boolean{uwwkrpt@se}}{\large}{} \@date \par}%
   \end{center}
   \@thanks
   \end{singlespacing}
   \end{titlepage}%
 %    \end{macrocode}
+% \changes{v2.8}{2012/04/24}{Made some SE-only tweaks.}
 % After defining the title page, commands we no longer need are let go.
 %    \begin{macrocode}
   \setcounter{footnote}{0}%
@@ -1182,16 +1222,24 @@
 % The header block is created.  First, the author and the author's
 % address; then the current date; then the receiver of the report and
 % his address; and finally the salutation.
+%
+% Note that for Software Engineering reports, the letter is addressed to
+% the director, not the chair.
 %    \begin{macrocode}
   \noindent\@@author\\\@address\par\noindent%
   \@@date \par\noindent%
-  \@chair, Chair\\*\@chairaddress\par\noindent%
+  \ifthenelse{\boolean{uwwkrpt@se}}
+    {\@chair, Director\\*\@chairaddress\par\noindent}%
+    {\@chair, Chair\\*\@chairaddress\par\noindent}%
   Dear \@chair:%
 %    \end{macrocode}
 %
-% Create a subject line, much like formal business letters of old.
+% Create a subject line, much like formal business letters of old. This is
+% omitted from Software Engineering reports.
 %    \begin{macrocode}
-  \begin{center}\textbf{Re: Submission of my work term report.}\end{center}}
+  \ifthenelse{\boolean{uwwkrpt@se}}
+    {\par}
+    {\begin{center}\textbf{Re: Submission of my work term report.}\end{center}}}
 %    \end{macrocode}
 %
 % The author types her letter, and mentions all the things she is
@@ -1201,8 +1249,8 @@
 % disclaimer boilerplate, required by Section 9.9.1 of the
 % CESRM~\cite{ref:cesrm}.
 %    \begin{macrocode}
-  {\par I hereby confirm that I have received no further help other 
-  than what is mentioned above in writing this report.
+  {\par I hereby confirm that I have received no further help, other
+  than what is mentioned above, in writing this report.
 %    \end{macrocode}
 %
 % The E\&CE~\cite{ref:ecewrg} and SE~\cite{ref:sewrg} guidelines require
@@ -1240,32 +1288,47 @@
 %    \end{macrocode}
 %
 % \changes{v2.0}{2003/04/26}{Legal boilerplate for each program.}
+% \changes{v2.8}{2012/04/24}{Some more SE-only tweaks to the letter.}
 %
 % With the legal requirements completed, the signature block can be
 % generated.  The signature line is only 3 inches long and 0.3 in tall,
 % but that should be sufficient for most purposes.  To satisfy Section
 % 9.1 of the CESRM~\cite{ref:cesrm}, the student's name and ID are
 % listed below the signature line.
+% Software Engineering only requires the signature, student's name, and
+% student's ID. No signature line is required. Furthermore, the signature
+% block is indented.
 %    \begin{macrocode}
   \par\noindent
   \begin{minipage}{\textwidth}
+  \ifthenelse{\boolean{uwwkrpt@se}}{\setlength{\parindent}{3in}}{}
   \setlength{\parskip}{\uwwkrpt@parskip}
   \vspace*{\uwwkrpt@parskip}
-  Yours sincerely,\\*%
+  \ifthenelse{\boolean{uwwkrpt@se}}{
+  Sincerely,
+  \vspace*{0.75in}\\
+  \indent\@@author\\
+  \indent Student ID: \@uwid}%
+  {Yours sincerely,\\*%
   \rule{0in}{0.3in}\\*{\hrule \@width 3in}%
   \noindent\@@author, \@uwid
   \par\noindent
-  Encl.%
+  Encl.}%
   \end{minipage}
 %    \end{macrocode}
 %
 % \changes{v2.2}{2003/05/02}{Keep the signature block together.}
+% \changes{v2.8}{2012/04/24}{More SE-only tweaks to the signature block.}
 %
 % Now that the letter is done, we set the correct page number for pages
 % that follow the letter, and then restore double-spacing.
 %    \begin{macrocode}
-  \@setpostletterpagenum\uwwkrpt@spacing\newpage%
+  \@setpostletterpagenum\uwwkrpt@spacing%
+  \ifthenelse{\not \boolean{uwwkrpt@se}}{\newpage}{}%
 %    \end{macrocode}
+%
+% \changes{v2.8}{2012/04/24}{Ensure page number shows up on the Executive
+%                            Summary for SE reports.}
 %
 % All the excess variables that were used can now be let go.
 %    \begin{macrocode}
@@ -1274,6 +1337,8 @@
   \global\let\@@date\@empty
   \global\let\uwid\relax
   \global\let\@uwid\@empty
+  \global\let\userid\relax
+  \global\let\@userid\@empty
   \global\let\email\relax
   \global\let\@email\@empty
   \global\let\employer\relax
@@ -1395,7 +1460,7 @@
     \renewcommand{\@secdotzerostart}[1]{\renewcommand{\dotzero}{}}
     \renewcommand{\@secdotzeroend}[1]{}
     }{}%
-  \ifthenelse{\boolean{uwwkrpt@ece}}
+  \ifthenelse{\boolean{uwwkrpt@ece} \or \boolean{uwwkrpt@se}}
     {\renewcommand{\@appendixtitle}{Appendix }}{}
   \appendix@rig%
 }
@@ -1403,6 +1468,7 @@
 % \changes{v2.3}{2003/05/09}{Numbered sections end in ``.0'' in Math.}
 % \changes{v2.5}{2003/05/10}{Fix section numbering in Appendices.}
 % \changes{v2.6}{2003/05/20}{`Appendix' should prefix appendix numbers.}
+% \changes{v2.8}{2012/04/24}{`Appendix' prefixes appendix numbers for SE.}
 % \end{macro}
 %
 % \begin{macro}{\backmatter}
@@ -1585,17 +1651,24 @@
 % \begin{macro}{\tableofcontents}
 % The table should be single-spaced, as |\parskip| should give adequate
 % spacing between items.
+% The table of contents should list itself in Software Engineering reports.
 %    \begin{macrocode}
+\newcommand{\toc@intoc}{\relax}
+\ifthenelse{\boolean{uwwkrpt@se}}{%
+  \renewcommand{\toc@intoc}{%
+    \addcontentsline{toc}{section}{Table of Contents}}}{}
 \let\tableofcontents@rig\tableofcontents
 \renewcommand{\tableofcontents}{%
   \clearpage
   \begin{singlespacing}
   \setlength{\parskip}{0pt}
-  \tableofcontents@rig\par
+  \tableofcontents@rig \toc@intoc \par
   \end{singlespacing}
 }
 %    \end{macrocode}
 % \end{macro}
+%
+% \changes{v2.8}{2012/04/24}{SE Table of Contents lists itself.}
 %
 % Between the heading of each section, and the right-justified page
 % numbers, there should be dotted tab leaders to lead the eye across the
@@ -1655,7 +1728,20 @@
 % We ensure that the ``List of Figures'' is on a separate page and
 % single-spaced. The spacing provided by |\parskip| is sufficient. 
 % Also included is |\listoffigures@intoc| to respect the settings above.
+%
+% The SE guidlines require that the entries are left-justified and not
+% indented. Furthermore, we include the full label, eg ``Figure 1-2''.
 %    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@se}}{%
+  \RequirePackage[titles]{tocloft}
+  \renewcommand{\cftsecleader}{\cftdotfill{\cftsubsecdotsep}}
+  \setlength{\cftfigindent}{0pt}
+  \newlength{\myfiglen}
+  \renewcommand{\cftfigpresnum}{\figurename\enspace}
+  \renewcommand{\cftfigaftersnum}{:}
+  \settowidth{\myfiglen}{\cftfigpresnum\cftfigaftersnum}
+  \addtolength{\cftfignumwidth}{\myfiglen}
+}{}
 \let\listoffigures@rig\listoffigures
 \renewcommand{\listoffigures}{%
   \clearpage
@@ -1670,6 +1756,14 @@
 % The ``List of Tables'' should behave exactly as the ``List of
 % Figures''.
 %    \begin{macrocode}
+\ifthenelse{\boolean{uwwkrpt@se}}{%
+  \setlength{\cfttabindent}{0pt}
+  \newlength{\mytablen}
+  \renewcommand{\cfttabpresnum}{\tablename\enspace}
+  \renewcommand{\cfttabaftersnum}{:}
+  \settowidth{\mytablen}{\cfttabpresnum\cfttabaftersnum}
+  \addtolength{\cfttabnumwidth}{\mytablen}
+}{}
 \let\listoftables@rig\listoftables
 \renewcommand{\listoftables}{%
   \clearpage
@@ -1679,6 +1773,8 @@
 }
 %    \end{macrocode}
 % \end{macro}
+% \changes{v2.8}{2012/04/24}{Adjust the labels and formatting for the List of
+%                            Figures and the List of Tables.}
 %
 % \subsection{Tables and figures}
 %
@@ -1709,6 +1805,11 @@
 % after they are referenced in the text.  The only way to guarantee this 
 % is to change the default \meta{loc} argument to |[htbp]|.  See Section
 % \ref{sec:body} for more information.
+%
+% Software Engineering reports require that table and figure numbering restarts
+% in each appendix, and uses a combination of the appendix label and
+% table/figure number, eg A-1. To ensure this, we extend this numbering scheme
+% to main body sections as well.
 %    \begin{macrocode}
 \ifthenelse{\boolean{uwwkrpt@ece} 
             \or \boolean{uwwkrpt@math} 
@@ -1716,9 +1817,21 @@
   \renewenvironment{figure}[1][htbp]{\begin{figure@rig}[#1]}{\end{figure@rig}}
   \renewenvironment{table}[1][htbp]{\begin{table@rig}[#1]}{\end{table@rig}}
 }{}
+\ifthenelse{\boolean{uwwkrpt@se}}{%
+  \RequirePackage{caption}
+  \captionsetup{
+    font=small,
+    labelfont=bf,
+    figurewithin=section,
+    tablewithin=section
+  }
+  \renewcommand\thefigure{\arabic{section}-\arabic{figure}}
+  \renewcommand\thetable{\arabic{section}-\arabic{table}}
+}{}
 %    \end{macrocode}
 % \end{environment}
 % \end{environment}
+% \changes{v2.8}{2012/04/24}{Modify the table/figure labels for SE reports.}
 %
 % \subsection{References}
 %
@@ -1734,9 +1847,15 @@
 % with almost every \LaTeX{} installation, so we will call that instead.
 % The only difference is that |@ELECTRONIC{}| does not exist as a type
 % of citation, but this can be emulated with |@MISC{}|.
+%
+% For SE reports, the bibliography style should be handled in the .tex file,
+% with the ``biblatex'' package.
 %    \begin{macrocode}
-\bibliographystyle{ieeetr}
+\ifthenelse{\not \boolean{uwwkrpt@se}}{\bibliographystyle{ieeetr}}{}
 %    \end{macrocode}
+%
+% \changes{v2.8}{2012/04/24}{For SE reports, handle bibliography in the .tex
+%                            file.}
 %
 % In the future, I may consider adding support for the more recent IEEE
 % Transactions style, but only after it ships with the major \TeX{}

@@ -24,6 +24,10 @@
 % We will use some packages to add functionality
 \usepackage{graphicx} % Include graphic importing
 
+% Use biblatex for references
+\usepackage[style=ieee,sorting=none,dateabbrev=false]{biblatex}
+\addbibresource{uw-wkrpt-bib.bib} % Specify the bibliography file
+
 % Now we will begin writing the document.
 \begin{document}
 
@@ -57,6 +61,9 @@
 % Fill in your faculty name.
 \faculty{Software Engineering}
 
+% Fill in your student user ID
+\userid{jrhacker}
+
 % Fill in your e-mail address.
 \email{jrhacker@engmail}
 
@@ -74,8 +81,8 @@
               University of Waterloo,\\*
 	      Waterloo, ON\ \ N2L 3G1}
 
-% If you are writing a "Confidential 1" report, uncomment the next line.
-%\confidential{Confidential-1}
+% If you are writing an "SE-confidential" report, uncomment the next line.
+%\confidential{SE-confidential}
 
 % If you want to specify the date, fill it in here.  If you comment out
 % this line, today's date will be substituted.
@@ -443,8 +450,8 @@ of fuss.
 \backmatter
 
 % Here, we insert a References section, which will be formatted properly.
-% The list of works you have referenced should be in FILENAME.bib,
-% which will be workreport-sample.bib, if you use the command below.
+% The list of works you have referenced should be specified in the preamble.
+% In this template, the file is uw-wkrpt-bib.bib.
 %
 % Note, you will need to process the document in a certain order.  First,
 % run LaTeX.  The % first pass will allow LaTeX to build a list of 
@@ -453,7 +460,7 @@ of fuss.
 %   LaTeX Warning: There were undefined references.
 % This is normal.  Now you run BiBTeX in order to generate the proper
 % layout for the references.  After this, you run LaTeX once more.
-\bibliography{uw-wkrpt-bib}
+\printbibliography[heading=bibintoc]
 
 \section{Acknowledgements}
 % This section shall acknowledge the people who helped with the writing 
