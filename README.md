@@ -89,7 +89,7 @@ To simply this process, you may find [Latexmk][5] to be useful.
 [5]: http://www.phys.psu.edu/~collins/software/latexmk-jcc/
 
 Latexmk will run `pdflatex` and `bibtex` as many times as is necessary for you,
-so you only need to call it once.
+so you only need to call it once. See Makefile.example.
 
 ## Files
 
@@ -99,6 +99,7 @@ so you only need to call it once.
 * The ChangeLog file is a record of the changes made to the software (before
   this class was under version control).
 * LICENSE contains a copy of the GNU General Public License.
+* Makefile is the makefile for generating the uw-wkrpt class and documentation.
 * uw-wkrpt.ins is the docstrip installer.
 * uw-wkrpt.dtx is the docstrip document that contains the entire uw-wkrpt
   package.
@@ -107,6 +108,7 @@ so you only need to call it once.
   closely to the guidelines as possible.
 * uw-wkrpt.bib is the bibliography or references list that is imported 
   by the example reports.
+* Makefile.example is an example makefile that demonstrates the use of Latexmk.
 * don-hires.pdf is a picture of Donald E. Knuth, acquired from his 
   website and used in workreport-sample.tex.
 
