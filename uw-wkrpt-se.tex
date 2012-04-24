@@ -19,14 +19,26 @@
 %
 % We begin by calling the workreport class which includes all the
 % definitions for the macros we will use.
-\documentclass[se]{uw-wkrpt}
+\documentclass[se,blockletter]{uw-wkrpt}
 
-% We will use some packages to add functionality
+% LaTeX preamble: load some packages to add functionality
 \usepackage{graphicx} % Include graphic importing
+
+\usepackage[T1]{fontenc} % Better fonts
+\usepackage{ae,aecompl}
+
+\usepackage{indentfirst} % Indent first paragraph of each section
 
 % Use biblatex for references
 \usepackage[style=ieee,sorting=none,dateabbrev=false]{biblatex}
 \addbibresource{uw-wkrpt-bib.bib} % Specify the bibliography file
+
+% This needs to be the last package loaded
+\usepackage[pdftex]{hyperref} % Generate PDF links and bookmarks.
+\hypersetup{
+  bookmarks=true,
+  bookmarksnumbered=true
+}
 
 % Now we will begin writing the document.
 \begin{document}
@@ -37,7 +49,7 @@
 
 %% First we, should create a title page.  This is done below:
 % Fill in the title of your report.
-\title{A \LaTeX{} document class for work reports}
+\title{A \LaTeX{} Document Class for Work Reports}
 
 % Fill in your name.
 \author{J. Random Hacker}
@@ -46,7 +58,7 @@
 \uwid{01234567}
 
 % Fill in your home address.
-\address{123 University Ave. W.,\\*
+\address{123 University Ave. W.\\*
          Waterloo, ON\ \ N2L 3G1}
 
 % Fill in your employer's name.
@@ -68,17 +80,17 @@
 \email{jrhacker@engmail}
 
 % Fill in your term.
-\term{1B}
+\term{2A}
 
 % Fill in your program.
 \program{Software Engineering}
 
 % Fill in the department chair's name.
-\chair{Dr.\ J.\ Atlee}
+\chair{Dr.\ C.\ Clarke}
 
 % Fill in the department chair's mailing address.
-\chairaddress{Software Engineering Department,\\*
-              University of Waterloo,\\*
+\chairaddress{Software Engineering\\*
+              University of Waterloo\\*
 	      Waterloo, ON\ \ N2L 3G1}
 
 % If you are writing an "SE-confidential" report, uncomment the next line.
@@ -86,7 +98,7 @@
 
 % If you want to specify the date, fill it in here.  If you comment out
 % this line, today's date will be substituted.
-\date{April 26, 2003}
+\date{April 24, 2012}
 
 % Now, we ask LaTeX to generate the title.
 \maketitle
@@ -100,7 +112,7 @@
 
 % After this, we must create a letter of submission.
 \begin{letter}
-I have just completed my first work term, following my \theterm{} term.
+I have just completed my second work term, following my \theterm{} term.
 Please find enclosed my first work term report entitled:
 ``\thetitle'' for the Software Widgets group at \theemployer.  
 My departmental manager was Rube Goldberg
@@ -121,33 +133,7 @@ tools.
 % We are now finished with the letter.
 \end{letter}
 
-% We continue with required sections, such as the Contributions and Summary. 
-\section{Contributions}
-
-I worked in the Software Widgets group, which consisted of 2 animators,
-6 cartoon characters, 3 software developers and 2 testers.  We were to
-design labour-saving computerised devices, for internal consumption.
-Being self-sufficient, we were involved in the research, design,
-implementation and testing for all our software widgets.
-
-Over the course of four months, we created three of these widgets.
-I was responsible for writing software.  I looked at the design
-specifications, and wrote test-suites and software to meet them.
-The testers would add to my rudimentary test suites, and report
-errors to me whenever a test failed.
-
-From the experiences in creating documentation for my programs, I
-acquired expertise in \LaTeX{}, which I found to be an excellent
-typesetting system.  Armed with this knowledge, I was able to use this
-wonderful document class which eases the typesetting of work
-reports, and follows the E\&CE guidelines~\cite{ref:eceguidelines} and
-the Co-op student manual~\cite{ref:coopman}.
-
-From this sample work report, anyone can create a report that looks
-good, and is easy to read.  Acme will benefit, because they now have a
-document class to provide to future co-op students, thereby reducing the
-time they spend on formatting reports.
-
+% We continue with required sections, such as the Executive Summary.
 \section{Executive Summary}
 This document describes the use of the \texttt{uw-wkrpt.cls}
 document class in creating work reports.  Written in the 
