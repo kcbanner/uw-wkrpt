@@ -14,9 +14,8 @@ with the guidelines, please let me know, or send a pull request!
 
 ## LaTeX Info
 
-If you do not know LaTeX, please learn! It is not too
-difficult to use, and is really quite helpful. You can read the
-workreport-sample.pdf file included in this tarball, as well as:
+If you do not know LaTeX, please learn! It is not too difficult to use, and is
+really quite helpful. You can read any of the example work reports, as well as:
 [A not so short introduction to LaTeX2e: or LaTeX2e in 113 minutes][2].
 
 You can also find more information on-line.  There is an [FAQ][3] and a
@@ -135,4 +134,4 @@ line, just add `\usepackage{foo}`, where `foo` is the package name.
 
 -- Cory Snider <corhere@gmail.com> Fri, 16 Sep 2011 01:13:02 -0400
 
--- Ming-Ho Yee <ming-ho.yee@uwaterloo.ca> Tue, 24 Apr 2012 14:28:12 -0400
+-- Ming-Ho Yee <ming-ho.yee@uwaterloo.ca> Tue, 24 Apr 2012 20:38:12 -0400
